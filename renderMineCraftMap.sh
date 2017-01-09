@@ -43,7 +43,7 @@ echo "Remove the index.html created by the render"
 tmux send -t minecraftServer 'rm /var/www/minecraft/index.html' ENTER
 
 echo "Replace index.html with the authenticatation index.html"
-tmux send -t minecraftServer 'cp /var/www/index.html.bak /var/www/minecraft/index.html' ENTER
+tmux send -t minecraftServer 'cp /home/ubuntu/minecraft/index.html.bak /var/www/minecraft/index.html' ENTER
 
 echo "Cleaning the mcOverview directory for future use..."
 tmux send -t minecraftServer 'rm -rf /home/ubuntu/mcOverview/*' ENTER
