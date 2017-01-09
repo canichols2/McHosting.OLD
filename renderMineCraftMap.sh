@@ -37,7 +37,7 @@ echo "Now we'll wait 25 minutes for the render to complete"
 sleep 25m
 
 echo "Render complete! Now copying files to web server"
-tmux send -t minecraftServer 'cp -R /home/ubuntu/mcOverview/* /var/www/minecraft' ENTER
+tmux send -t minecraftServer 'cp -R /home/ubuntu/mcOverview/* /var/www/minecraft/' ENTER
 
 echo "Remove the index.html created by the render"
 tmux send -t minecraftServer 'rm /var/www/minecraft/index.html' ENTER
