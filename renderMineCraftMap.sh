@@ -20,6 +20,9 @@ latestFile="$(ls -t /home/ubuntu/minecraftBackups | head -n1)"
 echo "Moving to the backups folder"
 tmux send -t minecraftServer 'cd /home/ubuntu/minecraftBackups' ENTER
 
+echo "Delete the previous render's extract"
+tmux send -t minecraftServer 'rm -rf ./home' ENTER
+
 echo "Uncompress the backup we made a moment ago"
 tmux send -t minecraftServer 'tar -xf '$latestFile ENTER
 
