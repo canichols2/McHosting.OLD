@@ -45,6 +45,9 @@ tmux send -t minecraftServer 'rm /var/www/minecraft/index.html' ENTER
 echo "Replace index.html with the authenticatation index.html"
 tmux send -t minecraftServer 'cp /home/ubuntu/minecraft/index.html.bak /var/www/minecraft/index.html' ENTER
 
+echo "Make sure the .htaccess file is present to ensure better security"
+tmux send -t minecraftServer 'cp /home/ubuntu/minecraft/.htaccess /var/www/minecraft/.htaccess' ENTER
+
 echo "Cleaning the mcOverview directory for future use..."
 tmux send -t minecraftServer 'rm -rf /home/ubuntu/mcOverview/*' ENTER
 
