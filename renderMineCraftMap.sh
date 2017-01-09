@@ -38,9 +38,17 @@ sleep 25m
 
 echo "Render complete! Now copying files to web server"
 tmux send -t minecraftServer 'cp -R /home/ubuntu/mcOverview/* /var/www/minecraft' ENTER
-tmux send -t minecraftServer 'cp /var/www/index.html.bak /var/www/minecraft index.html' ENTER
+
+echo "Remove the index.html created by the render"
+tmux send -t minecraftServer 'rm /var/www/minecraft/index.html' ENTER
+
+echo "Replace index.html with the authenticatation index.html"
+tmux send -t minecraftServer 'cp /var/www/index.html.bak /var/www/minecraft/index.html' ENTER
 
 echo "Cleaning the mcOverview directory for future use..."
 tmux send -t minecraftServer 'rm -rf /home/ubuntu/mcOverview/*' ENTER
+
+echo "Cleaning up uncompressed backup..."
+tmux send -t minecraftServer 'rm -rf /home/ubuntu/minecraftBackups/home' ENTER
 
 echo "Render process complete! Go to http://minecraft.ardenshackelford.com to view it!"
