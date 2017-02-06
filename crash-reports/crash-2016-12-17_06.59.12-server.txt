@@ -1,0 +1,200 @@
+---- Minecraft Crash Report ----
+// Oops.
+
+Time: 12/17/16 7:01 AM
+Description: Watching Server
+
+java.lang.Error
+	at java.lang.Throwable.fillInStackTrace(Native Method)
+	at java.lang.Throwable.fillInStackTrace(Throwable.java:783)
+	at java.lang.Throwable.<init>(Throwable.java:287)
+	at java.lang.Exception.<init>(Exception.java:84)
+	at java.lang.ReflectiveOperationException.<init>(ReflectiveOperationException.java:75)
+	at java.lang.ClassNotFoundException.<init>(ClassNotFoundException.java:82)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:411)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at org.apache.commons.lang3.builder.ToStringBuilder.<clinit>(ToStringBuilder.java:94)
+	at com.mojang.authlib.GameProfile.toString(GameProfile.java:105)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at mk.d(SourceFile:136)
+	at mk.a(SourceFile:127)
+	at er.l(SourceFile:382)
+	at mh.c(SourceFile:215)
+	at net.minecraft.server.MinecraftServer.D(SourceFile:652)
+	at lh.D(SourceFile:335)
+	at net.minecraft.server.MinecraftServer.C(SourceFile:562)
+	at net.minecraft.server.MinecraftServer.run(SourceFile:466)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at java.lang.Throwable.fillInStackTrace(Native Method)
+	at java.lang.Throwable.fillInStackTrace(Throwable.java:783)
+	at java.lang.Throwable.<init>(Throwable.java:287)
+	at java.lang.Exception.<init>(Exception.java:84)
+	at java.lang.ReflectiveOperationException.<init>(ReflectiveOperationException.java:75)
+	at java.lang.ClassNotFoundException.<init>(ClassNotFoundException.java:82)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:411)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at org.apache.commons.lang3.builder.ToStringBuilder.<clinit>(ToStringBuilder.java:94)
+	at com.mojang.authlib.GameProfile.toString(GameProfile.java:105)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at mk.d(SourceFile:136)
+	at mk.a(SourceFile:127)
+	at er.l(SourceFile:382)
+	at mh.c(SourceFile:215)
+	at net.minecraft.server.MinecraftServer.D(SourceFile:652)
+	at lh.D(SourceFile:335)
+	at net.minecraft.server.MinecraftServer.C(SourceFile:562)
+
+-- Thread Dump --
+Details:
+	Threads: "User Authenticator #39" Id=646 RUNNABLE
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1949)
+	-  locked sun.security.ssl.SSLSocketImpl@15284413
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1906)
+	-  locked sun.security.ssl.SSLSocketImpl@15284413
+	at sun.security.ssl.SSLSocketImpl.handleException(SSLSocketImpl.java:1870)
+	-  locked sun.security.ssl.SSLSocketImpl@15284413
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1410)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1387)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1546)
+	-  locked sun.net.www.protocol.https.DelegateHttpsURLConnection@1befb8c6
+	...
+
+
+"File IO Thread" Id=25 RUNNABLE
+	at java.io.ByteArrayOutputStream.<init>(ByteArrayOutputStream.java:77)
+	at auz$a.<init>(SourceFile:237)
+	at auz.b(SourceFile:225)
+	at ava.e(SourceFile:116)
+	at avb.b(SourceFile:158)
+	at avb.c(SourceFile:145)
+	at bdn.c(SourceFile:37)
+	at bdn.run(SourceFile:30)
+	...
+
+
+"Netty Epoll Server IO #1" Id=19 RUNNABLE
+	at io.netty.channel.epoll.Native.epollWait(Native Method)
+	at io.netty.channel.epoll.EpollEventLoop.epollWait(EpollEventLoop.java:194)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:219)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:116)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+"Server Watchdog" Id=21 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:454)
+	at li.run(SourceFile:43)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+"Netty Epoll Server IO #0" Id=18 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@5ad2b2fd owned by "Server thread" Id=12
+	at java.util.Collections$SynchronizedCollection.add(Collections.java:2035)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@5ad2b2fd
+	at mh$4.initChannel(SourceFile:122)
+	at io.netty.channel.ChannelInitializer.channelRegistered(ChannelInitializer.java:69)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRegistered(AbstractChannelHandlerContext.java:158)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRegistered(AbstractChannelHandlerContext.java:144)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRegistered(DefaultChannelPipeline.java:732)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:442)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:412)
+	...
+
+
+"Server console handler" Id=15 RUNNABLE (in native)
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:284)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	-  locked java.io.BufferedInputStream@d8d7d68
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)
+	-  locked java.io.InputStreamReader@6b42cd97
+	at java.io.InputStreamReader.read(InputStreamReader.java:184)
+	...
+
+
+"DestroyJavaVM" Id=14 RUNNABLE
+
+
+"Server thread" Id=12 RUNNABLE
+	at java.lang.Throwable.fillInStackTrace(Native Method)
+	at java.lang.Throwable.fillInStackTrace(Throwable.java:783)
+	-  locked java.lang.ClassNotFoundException@75f75cab
+	at java.lang.Throwable.<init>(Throwable.java:287)
+	at java.lang.Exception.<init>(Exception.java:84)
+	at java.lang.ReflectiveOperationException.<init>(ReflectiveOperationException.java:75)
+	at java.lang.ClassNotFoundException.<init>(ClassNotFoundException.java:82)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	-  locked java.lang.Object@3afd4db2
+	...
+
+
+"Server Infinisleeper" Id=11 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at lh$1.run(SourceFile:79)
+
+
+"Snooper Timer" Id=10 TIMED_WAITING on java.util.TaskQueue@212e51d5
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.util.TaskQueue@212e51d5
+	at java.util.TimerThread.mainLoop(Timer.java:552)
+	at java.util.TimerThread.run(Timer.java:505)
+
+
+"Signal Dispatcher" Id=4 RUNNABLE
+
+
+"Finalizer" Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@6ef3535f
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@6ef3535f
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@3eb313ee
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@3eb313ee
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+
+
+Stacktrace:
+	at li.run(SourceFile:59)
+	at java.lang.Thread.run(Thread.java:745)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.11
+	Operating System: Linux (amd64) version 4.4.0-45-generic
+	Java Version: 1.8.0_111, Oracle Corporation
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 93517504 bytes (89 MB) / 247144448 bytes (235 MB) up to 760217600 bytes (725 MB)
+	JVM Flags: 1 total; -Xmx750M
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	Profiler Position: N/A (disabled)
+	Player Count: 0 / 20; []
+	Is Modded: Unknown (can't tell)
+	Type: Dedicated Server (map_server.txt)

@@ -18,11 +18,22 @@ today=`date '+%Y_%m_%d_%H_%M'`;
 
 # Use today's date variable to create the name of the backup file.
 
+echo "We'll move into the backup directory then create the backup"
+tmux send -t minecraftServer 'cd /home/ubuntu/minecraftBackups' ENTER
+
 echo "Creating tar of server..."
 tmux send -t minecraftServer 'tar -czvf '$today'minecraft.tar /home/ubuntu/minecraft' ENTER
 
+echo "And we'll wait for the tar to be created - 10 Minutes"
+wait 600
+
+echo "The backup has completed"
+
+completeBackup='$(ls -t /home/ubuntu/minecraftBackups | head -n1)'
+
+echo "Backup name =$comleteBackup"
 # Now  we'll move the tar file to the backups directory.
-echo "Moving newly created backup to the backups directory."
-tmux send -t minecraftServer 'mv *.tar /home/ubuntu/minecraftBackups' ENTER
+# echo "Moving newly created backup to the backups directory."
+# tmux send -t minecraftServer 'mv *.tar /home/ubuntu/minecraftBackups' ENTER
 
 echo "Backup complete!"

@@ -7,3 +7,10 @@ echo "Stopping server..."
 # Let's stop the Server
 
 tmux send -t minecraftServer '/stop' ENTER
+
+echo "Wait a minute while the server ends..."
+wait 120
+
+echo "Ok, the server has stopped"
+
+

@@ -4,8 +4,8 @@
 
 echo "Starting server..."
 
-# Let's stop the Server
-tmux send -t minecraftServer 'cd /home/ubuntu/minecraft' ENTER
+# Let's start the Server
 tmux new -ds minecraftServer
+tmux send -t minecraftServer 'cd /home/ubuntu/minecraft' ENTER
 tmux send -t minecraftServer 'java -Xmx512M -Xms128M -jar /home/ubuntu/minecraft/minecraft_server.1.11.2.jar nogui' ENTER
 
