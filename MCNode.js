@@ -17,10 +17,12 @@ function stopTheServer(){
 };
 
 function backUp(){
+  console.log("Server has been stopped...");
   exec("./backupMinecraftServer.sh", puts);
 };
 
 function render(){
+  console.log("Server has been backed up...");
    exec("./renderMineCraftMap.sh", puts);
 };
 
