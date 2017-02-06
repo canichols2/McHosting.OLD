@@ -28,4 +28,3 @@ function render(){
 stopTheServer();
 setTimeout(backUp,  60000);            // 1 minute
 setTimeout(render,  60000);            // 1 minute
-setTimeout(updateWebServer, 1500000 ); //25 minutes
