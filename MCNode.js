@@ -26,7 +26,12 @@ function render(){
    exec("./renderMineCraftMap.sh", puts);
 };
 
+function finished(){
+  console.log("The render has finished");
+}
+
 //run the scripts...and hold your breath!
 stopTheServer();
 setTimeout(backUp,  60000);            // 1 minute
 setTimeout(render,  60000);            // 1 minute
+setTimeout(finished, 600000);          // 10 minutes
