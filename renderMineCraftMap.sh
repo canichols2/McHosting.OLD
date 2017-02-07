@@ -1,23 +1,7 @@
 #!/bin/bash
 
-# This script is for personal use to create a render of a minecraft server.
 # Due to limitation of memory on the VPS with AWS, run this script during times where no one is on the server.
 # The amount of memory needed for the render kills the MineCraft server.
-
-###############################################################################################
-
-# echo "Starting Render..."
-
-# Like a smart person, we make a backup first.
-# echo "Creating a backup of the data"
-# This is the data that we will use for the render just in case something goes wrong
-
-# /home/ubuntu/minecraft/backupMinecraftServer.sh
-
-
-################################################################################################
-################################################################################################
-
 
 # Begin render process.
 
@@ -57,3 +41,5 @@ tmux send -t minecraftServer 'cp /home/ubuntu/minecraft/.htaccess /var/www/minec
 
 echo "Cleaning up uncompressed backup..."
 tmux send -t minecraftServer 'rm -rf /home/ubuntu/minecraftBackups/home' ENTER
+tmux send -t minecraftServer 'cd ~/' ENTER
+echo "Render Complete!"

@@ -16,10 +16,18 @@ function stopTheServer(){
   exec("./stopMinecraftServer.sh", puts);
 };
 
+function startTheServer(){
+  exec("./startMinecraftServer.sh", puts);
+};
+
 function backUp(){
   console.log("Server has been stopped...");
   exec("./backupMinecraftServer.sh", puts);
 };
+
+function backupCleanup(){
+  exec("find /home/ubuntu/minecraftBackups -mtime +7 -exec rm {} \;");
+}
 
 function render(){
   console.log("Server has been backed up...");
@@ -28,10 +36,11 @@ function render(){
 
 function finished(){
   console.log("The render has finished");
-}
+};
 
 //run the scripts...and hold your breath!
-stopTheServer();
-setTimeout(backUp,   60000);            // 1 minute
-setTimeout(render,   60000);            // 1 minute
-setTimeout(finished, 900000);          // 15 minutes
+startTheServer();
+setTimeout(stopTheServer,   20000);     // 20 Seconds
+setTimeout(backUp,   40000);            // 40 Seconds
+setTimeout(render,   60000);            // 1 Minute
+setTimeout(finished, 900000);          // 15 Minutes

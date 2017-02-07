@@ -4,12 +4,12 @@
 
 # Just to be safe, we'll stop the server.
 
-echo "Stopping the MineCraft server..."
+# echo "Stopping the MineCraft server..."
 
-/home/ubuntu/minecraft/stopMinecraftServer.sh
+# /home/ubuntu/minecraft/stopMinecraftServer.sh
 
-echo "Remove backups older than 1 week (7 Days)"
-tmux send -t minecraftServer 'find /home/ubuntu/minecraftBackups -mtime +7 -exec rm {} \;' ENTER
+# echo "Remove backups older than 1 week (7 Days)"
+# tmux send -t minecraftServer 'find /home/ubuntu/minecraftBackups -mtime +7 -exec rm {} \;' ENTER
 
 echo "Starting backup of server..."
 
