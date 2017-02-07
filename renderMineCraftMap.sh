@@ -30,14 +30,14 @@ echo "Move into the correct directory to begin the render"
 tmux send -t minecraftServer 'cd ./home/ubuntu/minecraft/' ENTER
 
 echo "Begin the render process!"
-tmux send -t minecraftServer 'overviewer.py --rendermodes=smooth-lighting ./MCMadness /home/ubuntu/mcOverview' ENTER
+tmux send -t minecraftServer 'overviewer.py --rendermodes=smooth-lighting ./MCMadness /var/www/minecraft' ENTER
 
 echo "Now we'll wait 25 minutes for the render to complete"
 
-sleep 25m
+# sleep 25m
 
-echo "Render complete! Now copying files to web server"
-tmux send -t minecraftServer 'cp -R /home/ubuntu/mcOverview/* /var/www/minecraft/' ENTER
+#echo "Render complete! Now copying files to web server"
+#tmux send -t minecraftServer 'cp -R /home/ubuntu/mcOverview/* /var/www/minecraft/' ENTER
 
 echo "Remove the index.html created by the render"
 tmux send -t minecraftServer 'rm /var/www/minecraft/index.html' ENTER
@@ -48,8 +48,8 @@ tmux send -t minecraftServer 'cp /home/ubuntu/minecraft/index.html.bak /var/www/
 echo "Make sure the .htaccess file is present to ensure better security"
 tmux send -t minecraftServer 'cp /home/ubuntu/minecraft/.htaccess /var/www/minecraft/.htaccess' ENTER
 
-echo "Cleaning the mcOverview directory for future use..."
-tmux send -t minecraftServer 'rm -rf /home/ubuntu/mcOverview/*' ENTER
+#echo "Cleaning the mcOverview directory for future use..."
+#tmux send -t minecraftServer 'rm -rf /home/ubuntu/mcOverview/*' ENTER
 
 echo "Cleaning up uncompressed backup..."
 tmux send -t minecraftServer 'rm -rf /home/ubuntu/minecraftBackups/home' ENTER

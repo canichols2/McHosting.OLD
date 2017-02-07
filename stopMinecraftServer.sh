@@ -9,8 +9,10 @@ echo "Stopping server..."
 tmux send -t minecraftServer '/stop' ENTER
 
 echo "Wait a minute while the server ends..."
-wait 120
 
-echo "Ok, the server has stopped"
+# Use NodeJS for the rest of this script
+#wait 120
+
+# echo "Ok, the server has stopped"
 
 

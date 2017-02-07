@@ -25,7 +25,9 @@ echo "Creating tar of server..."
 tmux send -t minecraftServer 'tar -czvf '$today'minecraft.tar /home/ubuntu/minecraft' ENTER
 
 echo "And we'll wait for the tar to be created - 10 Minutes"
-wait 600
+
+# Split the script here. Two files or however.
+# wait 600
 
 echo "The backup has completed"
 
