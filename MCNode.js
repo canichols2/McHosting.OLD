@@ -39,8 +39,8 @@ function finished(){
 };
 
 //run the scripts...and hold your breath!
-startTheServer();
+// startTheServer();
 setTimeout(stopTheServer,   20000);     // 20 Seconds
 setTimeout(backUp,   40000);            // 40 Seconds
 setTimeout(render,   60000);            // 1 Minute
-setTimeout(finished, 900000);          // 15 Minutes
+setTimeout(finished, 300000);           // 5 Minutes

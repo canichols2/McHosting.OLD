@@ -1,5 +1,2 @@
-[00:38:35] [User Authenticator #15/INFO]: UUID of player pocket_86 is 86a094be-c4a3-460d-86f8-513f085fc6b5
-[00:38:35] [Server thread/INFO]: pocket_86[/192.225.189.42:28347] logged in with entity id 492247 at (-131.4265557384366, 77.0, -87.50560366486542)
-[00:38:35] [Server thread/INFO]: pocket_86 joined the game
-[00:40:17] [Server thread/INFO]: pocket_86 lost connection: TextComponent{text='Disconnected', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null, insertion=null}}
-[00:40:17] [Server thread/INFO]: pocket_86 left the game
+[06:30:01] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+[06:30:01] [Server thread/INFO]: Unknown command. Try /help for a list of commands
