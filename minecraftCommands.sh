@@ -71,6 +71,33 @@ backupServer() {
   echo "Backup complete!"
 }
 
+getLatestVersions() {
+
+  # Check Vanilla Server Version
+  vanillaManifest="https://launchermeta.mojang.com/mc/game/version_manifest.json"
+  wget -qN  ${vanillaManifest} -O /tmp/vanillaMCVersion.json
+  vanillaVersion=$(grep -oP "\"release\":\"\K\d{1,2}\.\d{1,2}\.\d{1,2}" /tmp/vanillaMCVersion.json)
+  # Add version to serverInfo.properties
+  sed -i "s/(vanillaVersion=).*/\1${vanillaVersion}" versions.txt
+
+  # Check Forge Version
+
+  echo "Getting MineCraft Forge server files..."
+  forgeManifest="/tmp/forgeManifest.html"
+  wget -qN https://files.minecraftforge.net  -O ${forgeManifest}
+
+  # Find Recommended Version
+  recommendedForge=$(grep -A1 "Download Recommended" ${forgeManifest} | grep -oP "<small>\K\d{1,2}\.\d{1,2}\.\d{1,2} - \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,4}" | sed 's/[[:space:]]//g')
+
+  ## Set Recommended Version in versions.txt
+
+
+  # Find Latest Version
+  latestForge=$(grep -A1 "Download Latest" ${forgeManifest} | grep -oP "<small>\K\d{1,2}\.\d{1,2}\.\d{1,2} - \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,4}" | sed 's/[[:space:]]//g')
+
+  ## Set Latest Version in versions.txt
+}
+
 startServer() {
   # Let's start the Server
   tmux new -ds minecraftServer
@@ -78,28 +105,28 @@ startServer() {
   echo "Starting ${serverType} server..."
   case $serverType in
     "vanilla")
-    if [[ -f ${installDir}minecraft_server.${vanillaVersion}.jar ]];
-    then
-      tmux send -t minecraftServer 'java -Xms'${Xms}' -Xms'${Xmx}' -jar '${installDir}'minecraft_server.'${vanillaVersion}'.jar nogui' ENTER
-    else
-      echo "Failed to start server; ${installDir}minecraft_server.${vanillaVersion}.jar could not be found."
-      echo "Please look into this and try again."
-      exit 1
-    fi
-    ;;
+      if [[ -f ${installDir}minecraft_server.${vanillaVersion}.jar ]];
+      then
+        tmux send -t minecraftServer 'java -Xms'${Xms}' -Xms'${Xmx}' -jar '${installDir}'minecraft_server.'${vanillaVersion}'.jar nogui' ENTER
+      else
+        echo "Failed to start server; ${installDir}minecraft_server.${vanillaVersion}.jar could not be found."
+        echo "Please look into this and try again."
+        exit 1
+      fi
+      ;;
     "forge")
-    if [[ -f ${installDir}forge-${forgeVersion}-universal.jar ]];
-    then
-      tmux send -t minecraftServer 'java -Xms'${Xms}' -Xms'${Xmx}' -jar '${installDir}'forge-'${forgeVersion}'-universal.jar nogui' ENTER
-    else
-      echo "Failed to start server; ${installDir}forge-${forgeVersion}-universal.jar could not be found."
-      echo "Please look into this and try again."
-      exit 1
-    fi
-    ;;
+      if [[ -f ${installDir}forge-${forgeVersion}-universal.jar ]];
+      then
+        tmux send -t minecraftServer 'java -Xms'${Xms}' -Xms'${Xmx}' -jar '${installDir}'forge-'${forgeVersion}'-universal.jar nogui' ENTER
+      else
+        echo "Failed to start server; ${installDir}forge-${forgeVersion}-universal.jar could not be found."
+        echo "Please look into this and try again."
+        exit 1
+      fi
+      ;;
     *)
-    echo "Provided server type not recognized."
-    echo "Usage: minecraftCommands.sh vanilla|forge"
+      echo "Provided server type not recognized."
+      echo "Usage: minecraftCommands.sh vanilla|forge"
   esac
 
 }
@@ -114,18 +141,18 @@ usage() {
 
 case $action in
   "startServer")
-  startServer
-  ;;
+    startServer
+    ;;
   "stopServer")
-  stopServer
-  ;;
+    stopServer
+    ;;
   "backupServer")
-  backupServer
-  ;;
+    backupServer
+    ;;
   *)
-  echo "Action not recognized."
-  usage
-  ;;
+    echo "Action not recognized."
+    usage
+    ;;
 esac
 
 

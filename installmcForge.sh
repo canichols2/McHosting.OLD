@@ -41,23 +41,24 @@ fi
 mcVersionMohjang=""
 versionFileURL=""
 javaVersion=""
-installForge=$2
+installDir=$(grep "installDir=\K.*")
+
 
 ### Set Installation Directory
-mcServerInstallDir=$1
-if [[ -z ${mcServerInstallDir} ]];
+installDir=$1
+if [[ -z ${installDir} ]];
 then
-  mcServerInstallDir="/opt/minecraft/"
+  installDir="/opt/minecraft/"
 fi
 ### Create Installation directory if it doesn't exist
-if [[ -d ${mcServerInstallDir} ]];
+if [[ -d ${installDir} ]];
 then
   echo "Installation directory exists. Continuing..."
 else
-  mkdir ${mcServerInstallDir}
-  if [[ -d $mcServerInstallDir ]];
+  mkdir ${installDir}
+  if [[ -d $installDir ]];
   then
-    echo "Installation directory has been created in ${mcServerInstallDir}."
+    echo "Installation directory has been created in ${installDir}."
     echo "Continuing threw script."
   else
     echo "Installation directory could not be created."
@@ -66,11 +67,12 @@ else
   fi
 fi
 
+echo "Adding serverInfo.properties files to ${installDir}"
+cp ./serverInfo.properties ${installDir}
+echo "Adding versions.txt to ${installDir}"
+cp ./versions.txt ${installDir}
+
 # Set installation of Forge to true or false
-if [[ -z ${installForge} ]];
-then
-  installForge="false"
-fi
 echo "Checking dependencies..."
 
 ## Check for Java
@@ -136,7 +138,7 @@ wget -N https://s3.amazonaws.com/Minecraft.Download/versions/${mcVersionMohjang}
 
 ### Copy server.jar to /opt/minecraft
 
-cp  /tmp/minecraft_server.${mcVersionMohjang}.jar $mcServerInstallDir
+cp  /tmp/minecraft_server.${mcVersionMohjang}.jar $installDir
 
 ### Run Server once to generate some needed files
 #### Create eula.txt with true value
@@ -144,7 +146,7 @@ echo "eula=true" > /opt/minecraft/eula.txt
 ### Best to use Screen for this part
 tmuxSessionName=minecraftServer
 tmux new -ds ${tmuxSessionName}
-tmux send -t $tmuxSessionName 'cd '$mcServerInstallDir ENTER
+tmux send -t $tmuxSessionName 'cd '$installDir ENTER
 tmux send -t $tmuxSessionName 'java -jar ./minecraft_server.'${mcVersionMohjang}'.jar -Xms512M -Xmx512M nogui' ENTER
 
 echo "Wait a moment for the server to fully start."
@@ -167,16 +169,16 @@ echo "Current Recommended version is: ${mcForgeRecommendedVersion}"
 echo "Downloading now..."
 ### Download recommended version
 comboVersion="${mcForgeRecommendedVersion}"
-wget -qN http://files.minecraftforge.net/maven/net/minecraftforge/forge/${comboVersion}/forge-${comboVersion}-installer.jar -O ${mcServerInstallDir}forge-${comboVersion}-installer.jar
+wget -qN http://files.minecraftforge.net/maven/net/minecraftforge/forge/${comboVersion}/forge-${comboVersion}-installer.jar -O ${installDir}forge-${comboVersion}-installer.jar
 
 echo "Installing Forge..."
-tmux send -t $tmuxSessionName 'java -Xms512M -Xmx512M -jar '${mcServerInstallDir}'forge-'${comboVersion}'-installer.jar --installServer' ENTER
+tmux send -t $tmuxSessionName 'java -Xms512M -Xmx512M -jar '${installDir}'forge-'${comboVersion}'-installer.jar --installServer' ENTER
 
 ### Downloading Universal Forge Filegg
-wget -qN http://files.minecraftforge.net/maven/net/minecraftforge/forge/${comboVersion}/forge-${comboVersion}-universal.jar -O ${mcServerInstallDir}forge-${comboVersion}-universal.jar
+wget -qN http://files.minecraftforge.net/maven/net/minecraftforge/forge/${comboVersion}/forge-${comboVersion}-universal.jar -O ${installDir}forge-${comboVersion}-universal.jar
 
 ### Run the Forge server once
-tmux send -t $tmuxSessionName "java -Xms512M -Xmx512M -jar ${mcServerInstallDir}forge-${comboVersion}-universal.jar nogui"
+tmux send -t $tmuxSessionName "java -Xms512M -Xmx512M -jar ${installDir}forge-${comboVersion}-universal.jar nogui"
 echo "Wait while Forge runs for the first time."
 sleep 60
 echo "Turn off server."
@@ -184,7 +186,7 @@ tmux send -t ${tmuxSessionName} "/stop" ENTER
 echo "Making changes to the server.properties."
 
 ### Change Configuration Files
-servPropFile=${mcServerInstallDir}server.properties
+servPropFile=${installDir}server.properties
 #### Set level-type to BIOMESOP
 sed -i 's~DEFAULT~BIOMESOP~' ${servPropFile}
 
@@ -200,8 +202,8 @@ sed -i 's~difficulty=[1,9]~difficulty=3~' ${servPropFile}
 
 ### Cleanup
 
-find $mcServerInstallDir -iname "*-installer.jar" -delete
+find $installDir -iname "*-installer.jar" -delete
 
 ### Start Server
 
-tmux send -t $tmuxSessionName 'java -Xms1G -Xmx1G -jar '${mcServerInstallDir}'forge-'${comboVersion}'-universal.jar nogui' ENTER
+tmux send -t $tmuxSessionName 'java -Xms1G -Xmx1G -jar '${installDir}'forge-'${comboVersion}'-universal.jar nogui' ENTER
