@@ -6,7 +6,11 @@
       "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
-      "latestVersion": "1.12.2"
+      "latestVersion": "1.12.2",
+      "testedVersions" : {
+        "version": "1.12.2"
+      },
+      "notes" : "Adds realistic sound effects to the environment"
     },
     "Antique-Atlas-Mod" : {
       "infoURL": "http://www.9minecraft.net/antique-atlas-mod/",
@@ -14,7 +18,11 @@
       "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
-      "latestVersion": "1.12"
+      "latestVersion": "1.12",
+      "testedVersions" : {
+        "version": "1.12.2"
+      },
+      "notes" : ""
     },
     "Better-Foliage-Mod" : {
       "infoURL": "http://www.9minecraft.net/better-foliage-mod/",
@@ -25,7 +33,8 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Cusomizable in in-game settings. Most notible change is rounded logs/trees"
     },
     "BiblioCraft-Mod" : {
       "infoURL": "http://www.9minecraft.net/bibliocraft-mod/",
@@ -36,7 +45,8 @@
       "latestVersion": "1.12",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Biomes-O-Plenty-Mod" : {
       "infoURL": "http://www.9minecraft.net/biomes-o-plenty-mod/",
@@ -47,7 +57,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Requires change to server.properties to work on a server: level-type=biomesop"
     },
     "Blood-Moon-Mod" : {
       "infoURL": "http://www.9minecraft.net/blood-moon-mod/",
@@ -58,7 +69,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Generates a custome properties file in the config dir - bloodmoon.cfg. Can customize server settings there"
     },
     "Bullseye-Mod" : {
       "infoURL": "http://www.9minecraft.net/bullseye-mod/",
@@ -69,7 +81,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Ceramics-Mod" : {
       "infoURL": "http://www.9minecraft.net/ceramics-mod/",
@@ -80,7 +93,8 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Chest-Transporter-Mod" : {
       "infoURL": "http://www.9minecraft.net/chest-transporter-mod/",
@@ -91,7 +105,8 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Chisels-And-Bits-Mod" : {
       "infoURL": "http://www.9minecraft.net/chisels-and-bits-mod/",
@@ -102,7 +117,8 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "CreativeCore" : {
       "infoURL": "http://www.9minecraft.net/creativecore/",
@@ -113,7 +129,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Dark-Roleplay-Core" : {
       "infoURL": "http://www.9minecraft.net/dark-roleplay-core/",
@@ -124,18 +141,22 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Dark-Roleplay-Medieval-Mod" : {
       "infoURL": "http://www.9minecraft.net/dark-roleplay-medieval-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1502500625&hash=5a49befe44464",
-      "dependencies": {"dependency1": "Dark-Roleplay-Core"},
+      "dependencies": {
+        "dependency1": "Dark-Roleplay-Core"
+      },
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Dynamic-Surroundings-Mod" : {
       "infoURL": "http://www.9minecraft.net/dynamic-surroundings-mod/",
@@ -146,7 +167,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Adds visual/audio effects to the environment"
     },
     "Farseek-Mod" : {
       "infoURL": "http://www.9minecraft.net/farseek-mod/",
@@ -157,7 +179,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Fast-Ladder-Climbing-Mod" : {
       "infoURL": "http://www.9minecraft.net/faster-ladder-climbing-mod/",
@@ -168,7 +191,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Flat-Bedrock-Mod" : {
       "infoURL": "http://www.9minecraft.net/flat-bedrock-mod/",
@@ -179,7 +203,8 @@
       "latestVersion": "1.12",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Gentle-Harvest-Mod" : {
       "infoURL": "http://www.9minecraft.net/gentle-harvest-mod/",
@@ -190,7 +215,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Gravestone-Mod" : {
       "infoURL": "http://www.9minecraft.net/gravestone-mod/",
@@ -201,7 +227,8 @@
       "latestVersion": "1.12",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "HarvestCraft-Mod" : {
       "infoURL": "http://www.9minecraft.net/harvestcraft-mod/",
@@ -212,7 +239,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Hopper-Ducts-Mod" : {
       "infoURL": "http://www.9minecraft.net/hopper-ducts-mod/",
@@ -223,7 +251,8 @@
       "latestVersion": "1.12",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Hwyla-Mod" : {
       "infoURL": "http://www.9minecraft.net/hwyla-mod/",
@@ -234,18 +263,20 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Gives the player an HUD that shows what they're looking at"
     },
     "Improved-Hoes-Mod" : {
       "infoURL": "http://www.9minecraft.net/improved-hoes-mod/",
       "donwloadURL": "http://www.files4.9minecraft.net/index.php?act=download&id=1503678172&hash=5a49cb3edcd98",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Infernal-Mobs-Mod" : {
       "infoURL": "http://www.9minecraft.net/infernal-mobs-mod/",
@@ -256,18 +287,22 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "ItemPhysic-Mod" : {
       "infoURL": "http://www.9minecraft.net/itemphysic-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1503379440&hash=5a49cbae2f934",
-      "dependencies": {"dependency1": "CreativeCore"},
+      "dependencies": {
+        "dependency1": "CreativeCore"
+      },
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Gives loose entities real world physics"
     },
     "Just-Enough-Items-Mod" : {
       "infoURL": "http://www.9minecraft.net/just-enough-items-mod/",
@@ -278,7 +313,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Shows all items (and craftins recipies) in the menu"
     },
     "Mekanism-Core-Mod" : {
       "infoURL": "http://www.9minecraft.net/mekanism-mod/",
@@ -289,7 +325,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Mekanism-Generators-Mod" : {
       "infoURL": "http://www.9minecraft.net/mekanism-mod/",
@@ -300,7 +337,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Mekanism-Tools-Mod" : {
       "infoURL": "http://www.9minecraft.net/mekanism-mod/",
@@ -311,7 +349,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "OptiFine-HD" : {
       "infoURL": "http://www.9minecraft.net/optifine-hd/",
@@ -322,7 +361,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Redstone-Paste-Mod" : {
       "infoURL": "http://www.9minecraft.net/redstone-paste-mod/",
@@ -333,7 +373,8 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Roguelike-Dungeons-Mod" : {
       "infoURL": "http://www.9minecraft.net/roguelike-dungeons-mod/",
@@ -344,7 +385,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Rough-Mobs-Mod" : {
       "infoURL": "http://www.9minecraft.net/rough-mobs-mod/",
@@ -355,7 +397,8 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Ruins-Mod" : {
       "infoURL": "http://www.9minecraft.net/ruins-mod/",
@@ -366,18 +409,22 @@
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Streams-Mod" : {
       "infoURL": "http://www.9minecraft.net/streams-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1505527629&hash=5a49d092cd81d",
-      "dependencies": {"dependency1":"Farseek-Mod"},
+      "dependencies": {
+        "dependency1":"Farseek-Mod"
+      },
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "ThirdPerson-Everything-Mod" : {
       "infoURL": "http://www.9minecraft.net/thirdperson-everything-mod/",
@@ -388,7 +435,8 @@
       "latestVersion": "1.12",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : "Automatically places you in 3rd person view when in a boat, on a horse, cart, etc"
     },
     "Tree-Chopper-Mod" : {
       "infoURL": "http://www.9minecraft.net/tree-chopper-mod/",
@@ -399,7 +447,8 @@
       "latestVersion": "1.12.2",
       "testedVersions": {
         "version": "1.12.2"
-      }
+      },
+      "notes" : ""
     },
     "Waystones-Mod" : {
       "infoURL": "http://www.9minecraft.net/waystones-mod/",
