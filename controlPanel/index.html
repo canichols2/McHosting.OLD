@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project Blocky</title>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body class="blue-grey darken-3">
+
+<script>
+  console.log("We are in the setup");
+  var socket =  io.connect("//64.52.84.42:8080");
+  socket.on("connected", function(){
+      console.log("Connection was made!");
+      });
+
+  function startServer(){
+    socket.emit("startServer");
+  }
+
+  function stopServer(){
+    socket.emit("stopServer");
+  }
+</script>
+
+    <nav class="nav-extended">
+
+        <div class="nav-wrapper  blue-grey darken-1">
+            <a href="#" class="brand-logo center"><strong>Project Blocky</strong></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+
+        </div>
+        <div class="nav-content blue-grey darken-2">
+
+            <ul class="tabs tabs-transparent">
+
+                <li class="tab"><a href="#dashboard" class="active">Dashboard</a></li>
+                <li class="tab"><a href="#stats">Server Stats</a></li>
+                <li class="tab"><a href="#users">User Management</a></li>
+                <li class="tab"><a href="#backups">Backups</a></li>
+                <li class="tab"><a href="#commands">Commands</a></li>
+                <li class="tab"><a href="#map">World Map</a></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <main class="container">
+        <section class="row flow-text col s12 m6">
+            <h1 class="transparent center-align orange-text">Project Blocky</h1>
+
+            <div class="row card blue-grey lighten-1">
+                <div class="card-content white-text">
+                    <span class="card-title"><h2>What is it?</h2></span>
+                    <p>This little project is our endeavor to make our mining habits a much simpler thing to manage. We opted to do this ourselves since others seemed to be lacking in features and of course... Material Design. That and Wes is super awesome and did some cool stuff on the backend.</p>
+                </div>
+            </div>
+
+            <div class="row card blue-grey lighten-1">
+                <div class="card-content white-text">
+                    <span class="card-title"><h3>The Beginning and End...</h3></span>
+                    <p>Go ahead... click one... you know you want to.</p>
+                    <a class="waves-effect waves-light btn" onclick="startServer()">Start Server</a>
+                    <a class="waves-effect waves-light btn" onclick="stopServer()">Stop Server</a>
+                </div>
+            </div>
+
+            <div class="row card blue-grey lighten-1">
+                <div class="card-content white-text">
+                    <span class="card-title"><h3>Good ol' Backups</h3></span>
+                    <p>Always need a good backup plan. Never know when something will go wrong...</p>
+                    <a class="waves-effect waves-light btn" onclick="makeToast()">Run a Backup</a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+
+</html>
+<script src="materialize/js/materialize.min.js"></script>
+<script type="application/javascript">
+
+    function makeToast() {
+        Materialize.toast('This does not work yet :(', 5000, 'rounded');
+    }
+</script>
