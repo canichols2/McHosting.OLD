@@ -1,25 +1,25 @@
 {
   "mods": {
-    "modName": "AmbientSounds" {
+    "AmbientSounds" : {
       "infoURL": "http://www.9minecraft.net/ambient-sounds-mod/",
       "donwloadURL": "https://addons-origin.cursecdn.com/files/2481/214/AmbientSounds%20v2.0.8%20mc1.12.jar",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.2"
     },
-    "modName": "Antique-Atlas-Mod" {
+    "Antique-Atlas-Mod" : {
       "infoURL": "http://www.9minecraft.net/antique-atlas-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1500878316&hash=5a49a8605a5ed",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12"
     },
-    "modName": "Better-Foliage-Mod" {
+    "Better-Foliage-Mod" : {
       "infoURL": "http://www.9minecraft.net/better-foliage-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1504252420&hash=5a49b22a6ef43",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.1",
@@ -27,10 +27,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "BiblioCraft-Mod" {
+    "BiblioCraft-Mod" : {
       "infoURL": "http://www.9minecraft.net/bibliocraft-mod/",
       "donwloadURL": "http://www.files.9minecraft.net/index.php?act=download&id=1498030414&hash=5a49b655af4a9",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12",
@@ -38,10 +38,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Biomes-O-Plenty-Mod" {
+    "Biomes-O-Plenty-Mod" : {
       "infoURL": "http://www.9minecraft.net/biomes-o-plenty-mod/",
       "donwloadURL": "https://addons-origin.cursecdn.com/files/2483/896/BiomesOPlenty-1.12.2-7.0.1.2297-universal.jar",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -49,10 +49,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Blood-Moon-Mod" {
+    "Blood-Moon-Mod" : {
       "infoURL": "http://www.9minecraft.net/blood-moon-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1497246210&hash=5a49b781d0cdb",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -60,10 +60,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Bullseye-Mod" {
+    "Bullseye-Mod" : {
       "infoURL": "http://www.9minecraft.net/bullseye-mod/",
       "donwloadURL": "http://www.files2.9minecraft.net/index.php?act=download&id=1505280875&hash=5a49b94271f9c",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -71,10 +71,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Ceramics-Mod" {
+    "Ceramics-Mod" : {
       "infoURL": "http://www.9minecraft.net/ceramics-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1502859360&hash=5a49baed3fc11",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -82,10 +82,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Chest-Transporter-Mod" {
+    "Chest-Transporter-Mod" : {
       "infoURL": "http://www.9minecraft.net/chest-transporter-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1502562370&hash=5a49bc8f0b6f4",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -93,10 +93,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Chisels-And-Bits-Mod" {
+    "Chisels-And-Bits-Mod" : {
       "infoURL": "http://www.9minecraft.net/chisels-and-bits-mod/",
       "donwloadURL": "http://www.files.9minecraft.net/index.php?act=download&id=1502691426&hash=5a49bd7254ea2",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -104,10 +104,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "CreativeCore" {
+    "CreativeCore" : {
       "infoURL": "http://www.9minecraft.net/creativecore/",
       "donwloadURL": "http://www.files4.9minecraft.net/index.php?act=download&id=1508216965&hash=5a49be78daef8",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -115,10 +115,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Dark-Roleplay-Core" {
+    "Dark-Roleplay-Core" : {
       "infoURL": "http://www.9minecraft.net/dark-roleplay-core/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1502500807&hash=5a49beb3be740",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -126,10 +126,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Dark-Roleplay-Medieval-Mod" {
+    "Dark-Roleplay-Medieval-Mod" : {
       "infoURL": "http://www.9minecraft.net/dark-roleplay-medieval-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1502500625&hash=5a49befe44464",
-      "dependencies": "Dark-Roleplay-Core",
+      "dependencies": {"dependency1": "Dark-Roleplay-Core"},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -137,10 +137,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Dynamic-Surroundings-Mod" {
+    "Dynamic-Surroundings-Mod" : {
       "infoURL": "http://www.9minecraft.net/dynamic-surroundings-mod/",
       "donwloadURL": "https://addons-origin.cursecdn.com/files/2482/521/DynamicSurroundings-1.12.2-3.4.7.2.jar",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.2",
@@ -148,10 +148,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Farseek-Mod" {
+    "Farseek-Mod" : {
       "infoURL": "http://www.9minecraft.net/farseek-mod/",
       "donwloadURL": "http://www.dl2.9minecraft.net/index.php?act=download&id=1505552330&hash=5a49c0af29c68",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -159,10 +159,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Fast-Ladder-Climbing-Mod" {
+    "Fast-Ladder-Climbing-Mod" : {
       "infoURL": "http://www.9minecraft.net/faster-ladder-climbing-mod/",
       "donwloadURL": "http://www.dl2.9minecraft.net/index.php?act=download&id=1514295485&hash=5a49c567cd973",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -170,10 +170,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Flat-Bedrock-Mod" {
+    "Flat-Bedrock-Mod" : {
       "infoURL": "http://www.9minecraft.net/flat-bedrock-mod/",
       "donwloadURL": "http://www.files2.9minecraft.net/index.php?act=download&id=1503708737&hash=5a49c59572b8d",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12",
@@ -181,10 +181,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Gentle-Harvest-Mod" {
+    "Gentle-Harvest-Mod" : {
       "infoURL": "http://www.9minecraft.net/gentle-harvest-mod/",
       "donwloadURL": "http://www.dl2.9minecraft.net/index.php?act=download&id=1513055166&hash=5a49c7721082b",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -192,10 +192,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Gravestone-Mod" {
+    "Gravestone-Mod" : {
       "infoURL": "http://www.9minecraft.net/gravestone-mod/",
       "donwloadURL": "http://www.files.9minecraft.net/index.php?act=download&id=1499609098&hash=5a49c8bf46e35",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12",
@@ -203,10 +203,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "HarvestCraft-Mod" {
+    "HarvestCraft-Mod" : {
       "infoURL": "http://www.9minecraft.net/harvestcraft-mod/",
       "donwloadURL": "http://www.files4.9minecraft.net/index.php?act=download&id=1505983164&hash=5a49c99566fa0",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -214,10 +214,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Hopper-Ducts-Mod" {
+    "Hopper-Ducts-Mod" : {
       "infoURL": "http://www.9minecraft.net/hopper-ducts-mod/",
       "donwloadURL": "http://www.files4.9minecraft.net/index.php?act=download&id=1500897915&hash=5a49ca964ab4c",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12",
@@ -225,10 +225,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Hwyla-Mod" {
+    "Hwyla-Mod" : {
       "infoURL": "http://www.9minecraft.net/hwyla-mod/",
       "donwloadURL": "http://www.files3.9minecraft.net/index.php?act=download&id=1502279236&hash=5a49cb10c3156",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.1",
@@ -236,7 +236,7 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Improved-Hoes-Mod" {
+    "Improved-Hoes-Mod" : {
       "infoURL": "http://www.9minecraft.net/improved-hoes-mod/",
       "donwloadURL": "http://www.files4.9minecraft.net/index.php?act=download&id=1503678172&hash=5a49cb3edcd98",
       "dependencies": "",
@@ -247,10 +247,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Infernal-Mobs-Mod" {
+    "Infernal-Mobs-Mod" : {
       "infoURL": "http://www.9minecraft.net/infernal-mobs-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1510172652&hash=5a49cb6fe65a7",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -258,10 +258,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "ItemPhysic-Mod" {
+    "ItemPhysic-Mod" : {
       "infoURL": "http://www.9minecraft.net/itemphysic-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1503379440&hash=5a49cbae2f934",
-      "dependencies": "CreativeCore",
+      "dependencies": {"dependency1": "CreativeCore"},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.1",
@@ -269,10 +269,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Just-Enough-Items-Mod" {
+    "Just-Enough-Items-Mod" : {
       "infoURL": "http://www.9minecraft.net/just-enough-items-mod/",
       "donwloadURL": "http://www.files3.9minecraft.net/index.php?act=download&id=1505986316&hash=5a49cbcf58e1d",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.2",
@@ -280,10 +280,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Mekanism-Core-Mod" {
+    "Mekanism-Core-Mod" : {
       "infoURL": "http://www.9minecraft.net/mekanism-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1511857855&hash=5a49cc31bbb7d",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -291,10 +291,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Mekanism-Generators-Mod" {
+    "Mekanism-Generators-Mod" : {
       "infoURL": "http://www.9minecraft.net/mekanism-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1511857900&hash=5a49ccdfce88e",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -302,10 +302,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Mekanism-Tools-Mod" {
+    "Mekanism-Tools-Mod" : {
       "infoURL": "http://www.9minecraft.net/mekanism-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1511857920&hash=5a49cd0386c31",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -313,10 +313,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "OptiFine-HD" {
+    "OptiFine-HD" : {
       "infoURL": "http://www.9minecraft.net/optifine-hd/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1507396218&hash=5a49cd97650b3",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12.2",
@@ -324,10 +324,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Redstone-Paste-Mod" {
+    "Redstone-Paste-Mod" : {
       "infoURL": "http://www.9minecraft.net/redstone-paste-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1504914520&hash=5a49cde26dd23",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -335,10 +335,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Roguelike-Dungeons-Mod" {
+    "Roguelike-Dungeons-Mod" : {
       "infoURL": "http://www.9minecraft.net/roguelike-dungeons-mod/",
       "donwloadURL": "http://www.files2.9minecraft.net/index.php?act=download&id=1506495686&hash=5a49cf5d2d45f",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -346,10 +346,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Rough-Mobs-Mod" {
+    "Rough-Mobs-Mod" : {
       "infoURL": "http://www.9minecraft.net/rough-mobs-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1505449707&hash=5a49d017a1665",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -357,10 +357,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Ruins-Mod" {
+    "Ruins-Mod" : {
       "infoURL": "http://www.9minecraft.net/ruins-mod/",
       "donwloadURL": "http://www.files.9minecraft.net/index.php?act=download&id=1505809152&hash=5a49d0506552b",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -368,10 +368,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Streams-Mod" {
+    "Streams-Mod" : {
       "infoURL": "http://www.9minecraft.net/streams-mod/",
       "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1505527629&hash=5a49d092cd81d",
-      "dependencies": "Farseek-Mod",
+      "dependencies": {"dependency1":"Farseek-Mod"},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
@@ -379,10 +379,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "ThirdPerson-Everything-Mod" {
+    "ThirdPerson-Everything-Mod" : {
       "infoURL": "http://www.9minecraft.net/thirdperson-everything-mod/",
       "donwloadURL": "http://www.files2.9minecraft.net/index.php?act=download&id=1501400730&hash=5a49d0bddd261",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "no",
       "latestVersion": "1.12",
@@ -390,10 +390,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Tree-Chopper-Mod" {
+    "Tree-Chopper-Mod" : {
       "infoURL": "http://www.9minecraft.net/tree-chopper-mod/",
       "donwloadURL": "http://www.files4.9minecraft.net/index.php?act=download&id=1508746981&hash=5a49d11dbe1a6",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.2",
@@ -401,10 +401,10 @@
         "version": "1.12.2"
       }
     },
-    "modName": "Waystones-Mod" {
+    "Waystones-Mod" : {
       "infoURL": "http://www.9minecraft.net/waystones-mod/",
       "donwloadURL": "http://www.dl2.9minecraft.net/index.php?act=download&id=1502279692&hash=5a49d15435055",
-      "dependencies": "",
+      "dependencies": {},
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12.1",
