@@ -11,64 +11,50 @@ Xms=$(grep -oP "minMem=\K.*" ${serverProperties})
 Xmx=$(grep -oP "maxMem=\K.*" ${serverProperties})
 vanillaVersion=$(grep -oP "vanillaVersion=\K.*" ${serverProperties})
 forgeVersion=$(grep -oP "forgeVersion=\K.*" ${serverProperties})
+backupDir=$(grep oP "backupDir=\K.*" ${serverProperties})
 
 # Start MC Server
 
 backupServer() {
 
+  # Check for Backup Dir
+  if [[ -d ${backupDir} ]];
+  then
+    echo "Backup directory exists. Continuing to backup."
+  else
+    echo "Backup dir doesn't exist. Creating..."
+    mkdir ${backupDir}
+    if [[ -d ${backupDir} ]];
+    then
+      echo "Backup dir created. Moving on to backup..."
+    else
+      echo "Backup dir not created. Please check permissions for creating ${backupDir}"
+      echo "Then re-run the backup."
+      exit 4
+    fi
+  fi
+
   ######################
   # Backup Naming
   ######################
+  # TODO Add functionality to backup per World
   echo "Set variable for backup name."
-
   # Create a variable that will use today's date.
-  today=`date '+%Y_%m_%d_%H_%M'`;
-
-  # Use today's date variable to create the name of the backup file.
+  # Format: Year-Month-Day-Hour-Minute
+  backupTimeStamp=`date '+%Y-%m-%d-%H-%M'`;
 
   echo "We'll move into the backup directory then create the backup"
-  tmux send -t minecraftServer 'cd /home/ubuntu/minecraftBackups' ENTER
+  tmux send -t minecraftServer 'cd '${backupDir} ENTER
 
-  echo "Creating tar of server..."
-  tmux send -t minecraftServer 'tar -czvf '$today'minecraft.tar /home/ubuntu/minecraft' ENTER
+  echo "Creating compressed tar of server..."
+  tmux send -t minecraftServer 'tar -czvf '${backupTimeStamp}'minecraft.tar '${installDir} ENTER
+  echo "And we'll wait for the tar to be created - 5 Minutes"
+  # This ensures no other commands are thrown at the server during the backup
+  sleep 300
+  completeBackup=$(ls -t /home/ubuntu/minecraftBackups | head -n1)
 
-  completeBackup='$(ls -t /home/ubuntu/minecraftBackups | head -n1)'
-
-  echo "Backup name = $comleteBackup"
-
-  #####################
-  # End Backup Naming
-  # Start Backup Process
-  #####################
-
-  echo "Starting backup of server..."
-
-  # Create a variable that will use today's date.
-  today=`date '+%Y_%m_%d_%H_%M'`;
-
-  # Use today's date variable to create the name of the backup file.
-
-  echo "We'll move into the backup directory then create the backup"
-  tmux send -t minecraftServer 'cd /home/ubuntu/minecraftBackups' ENTER
-
-  echo "Creating tar of server..."
-  tmux send -t minecraftServer 'tar -czvf '$today'minecraft.tar /home/ubuntu/minecraft' ENTER
-
-  echo "And we'll wait for the tar to be created - 10 Minutes"
-
-  # Split the script here. Two files or however.
-  # wait 600
-
-  echo "The backup has completed"
-
-  completeBackup='$(ls -t /home/ubuntu/minecraftBackups | head -n1)'
-
-  echo "Backup name = $comleteBackup"
-  # Now  we'll move the tar file to the backups directory.
-  # echo "Moving newly created backup to the backups directory."
-  # tmux send -t minecraftServer 'mv *.tar /home/ubuntu/minecraftBackups' ENTER
-
-  echo "Backup complete!"
+  echo "Backup name = $completeBackup"
+  echo "Backup Complete!"
 }
 
 getLatestVersions() {
@@ -78,7 +64,7 @@ getLatestVersions() {
   wget -qN  ${vanillaManifest} -O /tmp/vanillaMCVersion.json
   vanillaVersion=$(grep -oP "\"release\":\"\K\d{1,2}\.\d{1,2}\.\d{1,2}" /tmp/vanillaMCVersion.json)
   # Add version to serverInfo.properties
-  sed -i "s/(vanillaVersion=).*/\1${vanillaVersion}" versions.txt
+  sed -i "s/(vanillaVersion=).*/\1${vanillaVersion}" ${serverVersions}
 
   # Check Forge Version
 
@@ -90,12 +76,13 @@ getLatestVersions() {
   recommendedForge=$(grep -A1 "Download Recommended" ${forgeManifest} | grep -oP "<small>\K\d{1,2}\.\d{1,2}\.\d{1,2} - \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,4}" | sed 's/[[:space:]]//g')
 
   ## Set Recommended Version in versions.txt
-
+  sed -i "s/(recommendedForge=).*/\1${recommendedForge}" ${serverVersions}
 
   # Find Latest Version
   latestForge=$(grep -A1 "Download Latest" ${forgeManifest} | grep -oP "<small>\K\d{1,2}\.\d{1,2}\.\d{1,2} - \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,4}" | sed 's/[[:space:]]//g')
 
   ## Set Latest Version in versions.txt
+  sed -i "s/(latestForge=).*/\1${latestForge}" ${serverVersions}
 }
 
 startServer() {
