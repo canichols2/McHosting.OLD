@@ -3,29 +3,10 @@
 # This script downloads and installs MineCraft server.
 # Per user input, will also download and install the Forge mod.
 
-# TODO Add support for other popular mods
+# Get Latest versions before installing
 
-# This script will do the following:
-# 1) Check system for the following: TODO
-#   1a) Which OS/Distro
-#   1b) Storage capacity
-#   1c) CPU count
-#   1d) RAM
-#   ** If minimum requirements are not met, exit. **
-# 2) If unset, prompt user if they would like to install Forge. TODO
-# 3) Download Vanilla MC Server
-# 4) Run server once
-# 5) Download Forge MC Install file
-# 6) Install Forge MC
-# 7) Configure Vanilla Server to use Forge
+./minecraftCommands getVersions
 
-#1) Download & Install Vanilla MC
-#2) Download & Install mods
-#3) Download & Install Forge
-#4) Run Once
-#5) Wipe World Folder
-#6) Change Server Settings
-#7) Run server final time
 
 ## TODO Add support for other popular distros (Fedora, CentOS, Arch, etc)
 

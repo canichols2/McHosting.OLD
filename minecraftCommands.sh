@@ -2,8 +2,7 @@
 
 ## Compile all existing functionality into once script that uses functions
 
-serverType=$1
-action=$2
+action=$1
 serverProperties="./serverInfo.properties"
 serverVersions="./versions.txt"
 installDir=$(grep -oP "installDir=\K.*" ${serverProperties})
@@ -135,6 +134,17 @@ case $action in
     ;;
   "backupServer")
     backupServer
+    ;;
+  "installVanilla")
+    serverType="vanilla"
+    installServer
+    ;;
+  "installForge")
+    serverType="forge"
+    installServer
+    ;;
+  "getVersions")
+    getLatestVersions
     ;;
   *)
     echo "Action not recognized."
