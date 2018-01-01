@@ -25,7 +25,7 @@
 #4) Run Once
 #5) Wipe World Folder
 #6) Change Server Settings
-#7) Run server final tim
+#7) Run server final time
 
 ## TODO Add support for other popular distros (Fedora, CentOS, Arch, etc)
 
@@ -33,8 +33,8 @@
 currUser=$EUID
 if [[ ! ${currUser} -eq 0 ]];
 then
-    echo "Please run this script as root."
-    exit 20
+  echo "Please run this script as root."
+  exit 20
 fi
 
 ## Set variables
@@ -47,29 +47,29 @@ installForge=$2
 mcServerInstallDir=$1
 if [[ -z ${mcServerInstallDir} ]];
 then
-    mcServerInstallDir="/opt/minecraft/"
+  mcServerInstallDir="/opt/minecraft/"
 fi
 ### Create Installation directory if it doesn't exist
 if [[ -d ${mcServerInstallDir} ]];
 then
-    echo "Installation directory exists. Continuing..."
+  echo "Installation directory exists. Continuing..."
 else
-    mkdir ${mcServerInstallDir}
-    if [[ -d $mcServerInstallDir ]];
-    then
-        echo "Installation directory has been created in ${mcServerInstallDir}."
-        echo "Continuing threw script."
-    else
-        echo "Installation directory could not be created."
-        echo "This is likely due to permissions."
-        exit 3
-    fi
+  mkdir ${mcServerInstallDir}
+  if [[ -d $mcServerInstallDir ]];
+  then
+    echo "Installation directory has been created in ${mcServerInstallDir}."
+    echo "Continuing threw script."
+  else
+    echo "Installation directory could not be created."
+    echo "This is likely due to permissions."
+    exit 3
+  fi
 fi
 
 # Set installation of Forge to true or false
 if [[ -z ${installForge} ]];
 then
-    installForge="false"
+  installForge="false"
 fi
 echo "Checking dependencies..."
 
@@ -80,54 +80,52 @@ checkJava=$(which java &>/dev/null ; echo $?)
 
 if [[ $checkJava -eq 0 ]];
 then
-    echo "Java is installed... Checking version..."
-    javaVersion=$(java -version 2>&1 | grep -oP "openjdk version \"\K\d{1,2}\.\d{1,2}\.\d{1}_\d{1,3}")
-    echo "The Java version I found is: ${javaVersion}"
+  echo "Java is installed... Checking version..."
+  javaVersion=$(java -version 2>&1 | grep -oP "openjdk version \"\K\d{1,2}\.\d{1,2}\.\d{1}_\d{1,3}")
+  echo "The Java version I found is: ${javaVersion}"
 
-    # Get main version
-    mainVersion=$(java -version 2>&1 | grep -oP "openjdk version \"\d{1,2}\.\K\d{1,2}")
+  # Get main version
+  mainVersion=$(java -version 2>&1 | grep -oP "openjdk version \"\d{1,2}\.\K\d{1,2}")
 
-    # Provide necessary output or exit depending on version of Java found
-    case $mainVersion in
-        8)
-            echo "You have the current version installed!"
-            echo "Hooray! This script will continue"
-            ;;
-        9)
-            echo "You have a newer than recommended version installed."
-            echo "Please consider downgrading to 8 as it is the recommended version of Java at this time."
-            echo "This script will continue but bear in mind that you are prone to run into issues."
-            ;;
-        [1-7])
-            echo "You need to upgrade to a more recent version of Java."
-            exit 10
-            ;;
-        *)
-            echo "Something went wrong when getting the version of Java installed."
-            exit 3
-            ;;
-    esac
+  # Provide necessary output or exit depending on version of Java found
+  case $mainVersion in
+    8)
+      echo "You have the current version installed!"
+      echo "Hooray! This script will continue"
+      ;;
+    9)
+      echo "You have a newer than recommended version installed."
+      echo "Please consider downgrading to 8 as it is the recommended version of Java at this time."
+      echo "This script will continue but bear in mind that you are prone to run into issues."
+      ;;
+    [1-7])
+      echo "You need to upgrade to a more recent version of Java."
+      echo "Please install at least Java 8 and re-run this script."
+      exit 10
+      ;;
+    *)
+      echo "Something went wrong when getting the version of Java installed."
+      exit 3
+      ;;
+  esac
 elif [[ $checkJava -eq 1 ]];
 then
-    echo "Java is not installed. Will attempt to download and install OpenJDK"
-    apt install -y openjdk-8-jre-headless tmux
-    installJavaCode=$($?)
-    if [[ ${installJavaCode} -eq 0 ]];
-    then
-        echo "OpenJDK 8 JRE has been successfully installed."
-    else
-        echo "Something went wrong when installing 'openjdk-8-jre-headless'."
-        echo "Apt Error Code: ${installJavaCode}"
-        echo "Please resolve this error and re-run this script."
-        exit 15
-    fi
-    ## Check for previous/current MC Server Installations TODO
+  echo "Java is not installed. Will attempt to download and install OpenJDK"
+  apt install -y openjdk-8-jre-headless tmux
+  installJavaCode=$($?)
+  if [[ ${installJavaCode} -eq 0 ]];
+  then
+    echo "OpenJDK 8 JRE has been successfully installed."
+  else
+    echo "Something went wrong when installing 'openjdk-8-jre-headless'."
+    echo "Apt Error Code: ${installJavaCode}"
+    echo "Please resolve this error and re-run this script."
+    exit 15
+  fi
 fi
 ### IF a current installation is found, find current version.
-
 #### IF local version < current version, backup and upgrade.
 #### IF local version = current version
-
 ## Get latest version of MC Server
 
 versionFileURL="https://launchermeta.mojang.com/mc/game/version_manifest.json"
@@ -165,8 +163,6 @@ forgeInfoPage="/tmp/mcForgeInfo.html"
 wget -qN https://files.minecraftforge.net  -O ${forgeInfoPage}
 mcForgeRecommendedVersion=$(grep -Po "<small>\K\d{1,2}\.\d{1,2}\.\d{1,2} - \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,4}" ${forgeInfoPage} | tail -n 1 | sed 's/[[:space:]]//g')
 
-http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.12.2-14.23.1.2580/forge-1.12.2-14.23.1.2580-universal.jar
-
 echo "Current Recommended version is: ${mcForgeRecommendedVersion}"
 echo "Downloading now..."
 ### Download recommended version
@@ -176,7 +172,7 @@ wget -qN http://files.minecraftforge.net/maven/net/minecraftforge/forge/${comboV
 echo "Installing Forge..."
 tmux send -t $tmuxSessionName 'java -Xms512M -Xmx512M -jar '${mcServerInstallDir}'forge-'${comboVersion}'-installer.jar --installServer' ENTER
 
-### Downloading Universal Forge File
+### Downloading Universal Forge Filegg
 wget -qN http://files.minecraftforge.net/maven/net/minecraftforge/forge/${comboVersion}/forge-${comboVersion}-universal.jar -O ${mcServerInstallDir}forge-${comboVersion}-universal.jar
 
 ### Run the Forge server once
