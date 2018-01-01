@@ -1,0 +1,31 @@
+{
+  "mods": {
+    "modName": "AmbientSounds" {
+      "infoURL": "http://www.9minecraft.net/ambient-sounds-mod/",
+      "donwloadURL": "https://addons-origin.cursecdn.com/files/2481/214/AmbientSounds%20v2.0.8%20mc1.12.jar",
+      "dependencies": "",
+      "clientSide": "yes",
+      "serverSide": "no",
+      "latestVersion": "1.12.2"
+    },
+    "modName": "Antique-Atlas-Mod" {
+      "infoURL": "http://www.9minecraft.net/antique-atlas-mod/",
+      "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1500878316&hash=5a49a8605a5ed",
+      "dependencies": "",
+      "clientSide": "yes",
+      "serverSide": "yes",
+      "latestVersion": "1.12"
+    },
+    "modName": "Antique-Atlas-Mod" {
+      "infoURL": "http://www.9minecraft.net/antique-atlas-mod/",
+      "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1500878316&hash=5a49a8605a5ed",
+      "dependencies": "",
+      "clientSide": "yes",
+      "serverSide": "yes",
+      "latestVersion": "1.12",
+      "testedVersions": {
+        "version": "1.12"
+      }
+    }
+  }
+}
