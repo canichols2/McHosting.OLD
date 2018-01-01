@@ -202,6 +202,10 @@ sed -i 's~difficulty=[1,9]~difficulty=3~' ${servPropFile}
 
 ### Download Mods
 
+### Cleanup
+
+find $mcServerInstallDir -iname "*-installer.jar" -delete
+
 ### Start Server
 
 tmux send -t $tmuxSessionName 'java -Xms1G -Xmx1G -jar '${mcServerInstallDir}'forge-'${comboVersion}'-universal.jar nogui' ENTER
