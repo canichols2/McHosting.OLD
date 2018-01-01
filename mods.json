@@ -16,16 +16,49 @@
       "serverSide": "yes",
       "latestVersion": "1.12"
     },
-    "modName": "Antique-Atlas-Mod" {
-      "infoURL": "http://www.9minecraft.net/antique-atlas-mod/",
-      "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1500878316&hash=5a49a8605a5ed",
+    "modName": "Better-Foliage-Mod" {
+      "infoURL": "http://www.9minecraft.net/better-foliage-mod/",
+      "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1504252420&hash=5a49b22a6ef43",
+      "dependencies": "",
+      "clientSide": "yes",
+      "serverSide": "no",
+      "latestVersion": "1.12.1",
+      "testedVersions": {
+        "version": "1.12.2"
+      }
+    },
+    "modName": "BiblioCraft-Mod" {
+      "infoURL": "http://www.9minecraft.net/bibliocraft-mod/",
+      "donwloadURL": "http://www.files.9minecraft.net/index.php?act=download&id=1498030414&hash=5a49b655af4a9",
       "dependencies": "",
       "clientSide": "yes",
       "serverSide": "yes",
       "latestVersion": "1.12",
       "testedVersions": {
-        "version": "1.12"
+        "version": "1.12.2"
       }
-    }
+    },
+    "modName": "Biomes-O-Plenty-Mod" {
+      "infoURL": "http://www.9minecraft.net/biomes-o-plenty-mod/",
+      "donwloadURL": "https://addons-origin.cursecdn.com/files/2483/896/BiomesOPlenty-1.12.2-7.0.1.2297-universal.jar",
+      "dependencies": "",
+      "clientSide": "yes",
+      "serverSide": "yes",
+      "latestVersion": "1.12.2",
+      "testedVersions": {
+        "version": "1.12.2"
+      }
+    },
+    "modName": "Blood-Moon-Mod" {
+      "infoURL": "http://www.9minecraft.net/blood-moon-mod/",
+      "donwloadURL": "http://www.dl6.9minecraft.net/index.php?act=download&id=1497246210&hash=5a49b781d0cdb",
+      "dependencies": "",
+      "clientSide": "yes",
+      "serverSide": "yes",
+      "latestVersion": "1.12.2",
+      "testedVersions": {
+        "version": "1.12.2"
+      }
+    },
   }
 }
