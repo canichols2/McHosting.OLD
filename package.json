@@ -3,6 +3,11 @@
     "version": "0.0.1",
     "description": "A hosting backend/fronted combo that allows easy creation and management of minecraft servers.",
     "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "express": "^4.16.3",
+        "materialize-css": "^0.100.2",
+        "nedb": "^1.8.0",
+        "request": "^2.87.0",
         "socket.io": "latest"
     },
     "author": "Cody Nichols,Arden Shackelford, Weston Clark"

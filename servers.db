@@ -1,0 +1,2 @@
+{"cwd":"C:/opt/minecraft/server1","name":"minecraftServer","jar":"craftbukkit.jar","maxRam":"-Xmx1G","minRam":"-Xms512M","properties":{},"log":[],"_id":"TY3RyEDAtOU4RlTp"}
+{"cwd":"/opt/minecraft/server2","name":"bukkit","jar":"craftbukkit.jar","maxRam":"-Xmx1G","minRam":"-Xms512M","properties":{},"log":[],"_id":"sqHuCDRBUOHP2gel"}
