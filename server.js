@@ -12,13 +12,13 @@ var express = require('express'),
     spawn = cp.spawn,
     request = require('request'),
     cheerio = require('cheerio')
-// var vanillaVerion = getVanillaVersions(),
-//     forgeVersion
+var vanillaVerion = getVanillaVersions(),
+    forgeVersion
 var command = require('./consoleCommands');
-// getForgeVersions(vanillaVerion.recommended)
-//     .then((data) => {
-//         forgeVersion = data
-//     })
+getForgeVersions(vanillaVerion.recommended)
+    .then((data) => {
+        forgeVersion = data
+    })
 
 if (process.platform == "win32") {
     var installDirParent = "C:/opt/minecraft/"
@@ -242,3 +242,7 @@ function getForgeVersions(vanillaVer) {
         })
     })
 }
+
+//SPONGE: https://www.spongepowered.org/downloads/spongeforge/stable/1.12.2
+//CraftBukkit:
+   // Needs to be done through BuildTools.jar
