@@ -32,7 +32,7 @@ var puts = function (error, stdout, stderr) {
 };
 
 //create the server and start listening on the defined port
-const PORT = 8080;
+const PORT = 8888;
 var server = http.createServer();
 server.listen(PORT);
 console.log("Listening for a connection...");
