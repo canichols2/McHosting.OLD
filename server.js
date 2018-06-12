@@ -1,6 +1,6 @@
 /**************************************************************
 *  Minecraft Dashboard Backend Server
-*  Author(s): Weston Clark
+*  Author(s): Weston Clark,Arden Shackelford, Cody Nichols
 *
 *  Description:
 *  This node server will serve as a back-end for the Minecraft
@@ -12,7 +12,7 @@
 **************************************************************
 *  Change Date      Name            Description
 *  =============    ===========     ==========================
-*  08/05/17         Weston Clark    Initial Creation
+*  06/12/18         Cody Nichols    Changing the structure of the server
 *
 **************************************************************/
 

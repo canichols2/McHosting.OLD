@@ -1,0 +1,9 @@
+{
+    "name": "MinecraftHosting",
+    "version": "0.0.1",
+    "description": "A hosting backend/fronted combo that allows easy creation and management of minecraft servers.",
+    "dependencies": {
+        "socket.io": "latest"
+    },
+    "author": "Cody Nichols,Arden Shackelford, Weston Clark"
+}
