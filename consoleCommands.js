@@ -4,7 +4,7 @@ var spawn = cp.spawn
 var fs = require('fs-extra')
 var runningServers = {}
 var requestpromise = require('request-promise')
-
+var download = require('download')
 
 //define how arguments are used in the terminal
 var puts = function (error, stdout, stderr) {
@@ -97,33 +97,52 @@ module.exports = {
             reject("Server Folder exists. run uninstall server")
          }
          //return new server to GUI
-         socket.emit("addServerToList",server)
+         io.emit("addServerToList",server)
          var jarURL = "http://s3.amazonaws.com/Minecraft.Download/versions/" + server.vanillaVer + "/minecraft_server." + server.vanillaVer + ".jar"
          fs.ensureDir(server.cwd)
             .then(()=>{
+               console.log("directory exists:",server.cwd)
                return new Promise(
                   (res,rej)=>{
-                     console.log("creating server.jar")
-                     const jarFile = fs.createWriteStream(server.cwd+server.jar);
-                     var req = request(jarURL)
-                     req.pipe(jarFile)
-                     console.log("RequestStatus:",req)
-                     setTimeout(()=>{
-                        console.log("RequestStatus:",req)
-                     },10000)
-                     req.on("error",(err)=>{
-                        console.log("Request Error:",err)
-                     })
-                     jarFile.on("finish",()=>{
-                        console.log("WriteStream: Jar File finished downloading")
-                        res(true)
-                     })
-                     jarFile.on("error",()=>{
-                        console.log("WriteStream: couldn't download the file.")
-                        rej("WriteStream: Couldn't download file")
-                     })
-                     }
-                  )
+                     var serverJar = process.env.installDirParent+"bin/"+"Vanilla/"+"vanilla_"+server.vanillaVer+".jar"
+                     //Check if version already exists in bin dir.
+                     console.log("Checking if Server File exists:",serverJar)
+                     fs.exists(serverJar)
+                     .catch(
+                        ()=>{
+                           console.log("server file did not exist:",serverJar)
+                           console.log("Downloading server file.")
+                           //download if not exist
+                           var downJar = download(jarURL,server.cwd,{filename:server.jar})
+                           downJar.on('downloadProgress',(progress)=>{
+                              console.log("download Progress: %"+Math.trunc(progress.percent*10000)/100)
+                              socket.emit('downloadProgress',{server:server,progress:progress,url:jarURL})
+                           })
+                           downJar.on('error',(err)=>{
+                              console.log("Download server jar failed.")
+                              return rej("download failed")
+                           })
+                           return downJar
+                        }
+                     )
+                     .finally(
+                        ()=>{
+                           //symlink to server.jar
+                           console.log("Finally: Creating Symlink")
+                           return fs.ensureSymlink(serverJar,server.cwd+server.jar)
+                           .next(()=>{
+                              console.log("Symlink got created")
+                              return res()
+                           })
+                           .catch(()=>{
+                              console.log("Symlink failed to create")
+                              return rej("Symlink failed")
+                              
+                           })
+                        }
+                     )
+                  }
+               )
             })
             .then(()=>{
                console.log("Writing EULA")
@@ -141,7 +160,9 @@ module.exports = {
                            console.log("VanillaServer ran and hit done.")
                            servInstance.stdin.write("stop\n")
                            console.log("VanillaServer Stop message sent.")
-                           return res(true);
+                           servInstance.on("exit",()=>{
+                              return res(true);
+                           })
                         }
                      })
                      servInstance.on('error',(err)=>{

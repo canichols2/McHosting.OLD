@@ -35,11 +35,20 @@ socket.on("addServerToList",(server)=>{
    // Could be done better. I shouldn't need to getElementById.
    // This method should just return the terminal element automatically.
    createServerExpandable(server.name)
-   var term = document.getElementById(servers[s].name + "-stdout")
-      for (l in servers[s].log) {
-         term.innerHTML += servers[s].log[l];
+   var term = document.getElementById(server.name + "-stdout")
+      for (l in server.log) {
+         term.innerHTML += server.log[l];
          term.scrollTop = term.scrollHeight
       }
+})
+socket.on("downloadProgress",(data)=>{
+   var term = document.getElementById(data.server.name+"-stdout")
+   var percent = data.progress.percent
+   if(term.innerHTML.split("\n").length > 0){
+      term.innerHTML = term.innerHTML.substring(0,term.innerHTML.lastIndexOf("\n"))
+   }
+   term.innerHTML += "\n%"+Math.trunc(percent*10000)/100+" Downloaded: "+data.server.jar+" from " + data.url;
+
 })
 
 function createServer() {

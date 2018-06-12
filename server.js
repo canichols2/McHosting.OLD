@@ -22,15 +22,15 @@ getForgeVersions(vanillaVerion.recommended)
     })
 
 if (process.platform == "win32") {
-    var installDirParent = "C:/opt/minecraft/"
+   process.env.installDirParent = "C:/opt/minecraft/"
 } else {
-    var installDirParent = "/opt/minecraft/"
+   process.env.installDirParent = "/opt/minecraft/"
 }
 
 var serversDB = new Datastore({filename:"servers.db",autoload:true})
 var servers = [
       {
-         cwd: installDirParent + "server1",
+         cwd: process.env.installDirParent + "server1",
          name: "minecraftServer",
          jar: 'craftbukkit.jar',
          maxRam: '-Xmx1G',
@@ -137,7 +137,7 @@ io.listen(server).on('connection', (socket) => {
         if (data) {
             var SN = data.servername;
             server={
-                cwd: installDirParent + "servers/" + SN + "/",
+                cwd: process.env.installDirParent + "servers/" + SN + "/",
                 jar:"vanilla_"+data.vanilla+".jar",
                 name: SN,
                 vanillaVer:data.vanilla,
@@ -148,9 +148,9 @@ io.listen(server).on('connection', (socket) => {
             command.installServer(socket,server)
                .then((server)=>{
                   //Save server info to DB
+                  console.log("attempting to add server to serversDB")
                   serversDB.insert(server)
-                  //return new server to GUI
-                  socket.broadcast.emit("addServerToList",server)
+                  console.log("added server to serversDB")
                })
                .catch((err)=>{
                   console.log("Create server failed:",err)
@@ -181,7 +181,7 @@ app.use('/materialize',express.static('./node_modules/materialize-css/dist'))
 
 //Get BuildTools.jar
 function getBuildTools(){
-   var dir = installDirParent+"bin/BuildTools/"
+   var dir = process.env.installDirParent+"bin/BuildTools/"
    var buildToolsJar = dir + "BuildTools.jar"
    console.log("Starting to download build tools to:",buildToolsJar)
    var BTURL = "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"

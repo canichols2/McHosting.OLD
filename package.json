@@ -7,6 +7,7 @@
     "description": "A hosting backend/fronted combo that allows easy creation and management of minecraft servers.",
     "dependencies": {
         "cheerio": "^1.0.0-rc.2",
+        "download": "^7.0.0",
         "express": "^4.16.3",
         "fs-extra": "^6.0.1",
         "materialize-css": "^0.100.2",
