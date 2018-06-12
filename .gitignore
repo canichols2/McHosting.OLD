@@ -1,7 +1,8 @@
 ### Server Files ###
 # Database file for local servers
 *.db
-
+# Downloaded or Compiled server jars #
+bin
 
 # Created by https://www.gitignore.io/api/git,node,linux,windows,visualstudiocode
 

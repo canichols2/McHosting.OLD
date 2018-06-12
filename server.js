@@ -11,7 +11,8 @@ var express = require('express'),
     exec = cp.exec,
     spawn = cp.spawn,
     request = require('request'),
-    cheerio = require('cheerio')
+    cheerio = require('cheerio'),
+    fs = require('fs-extra')
 var vanillaVerion = getVanillaVersions(),
     forgeVersion
 var command = require('./consoleCommands');
@@ -25,14 +26,7 @@ if (process.platform == "win32") {
 } else {
     var installDirParent = "/opt/minecraft/"
 }
-/***************************
- * TODO: load current servers, either 
- * from a file that is maintained by this app
- * or by listing directories in /opt/minecraft and
- * then reading in the JSON object stored in that dir
- ***************************
- * TODO: Store JSON file with following format to install dir.
- ***************************/
+
 var serversDB = new Datastore({filename:"servers.db",autoload:true})
 var servers = [
       {
@@ -85,7 +79,9 @@ io.listen(server).on('connection', (socket) => {
     //log that we are connected
     console.log("The server and client are connected");
     socket.emit("connected");
-    socket.emit("servers", servers)
+    serversDB.find({},(err,servers)=>{
+      socket.emit("servers", servers)
+   })
     socket.emit("version", vanillaVerion)
     //listen for what method to call
     socket.on("getForgeVersions", (vanillaVer, returnFunction) => {
@@ -97,7 +93,7 @@ io.listen(server).on('connection', (socket) => {
                 returnFunction(data)
             })
     })
-
+    socket.on("getBuildTools",()=>{getBuildTools()})
     socket.on("startServer", (data) => {
         if (data) {
             var SN = data.name
@@ -105,6 +101,7 @@ io.listen(server).on('connection', (socket) => {
         serversDB.findOne(
            {name:SN},
            (err,doc)=>{
+            //   console.log("Starting server:",SN,"Server:",doc)
               command.startServer(socket,SN,doc)
          }
       )
@@ -140,7 +137,8 @@ io.listen(server).on('connection', (socket) => {
         if (data) {
             var SN = data.servername;
             server={
-                cwd: installDirParent + SN,
+                cwd: installDirParent + "servers/" + SN + "/",
+                jar:"vanilla_"+data.vanilla+".jar",
                 name: SN,
                 vanillaVer:data.vanilla,
                 maxRam: data.maxMem,
@@ -148,7 +146,19 @@ io.listen(server).on('connection', (socket) => {
                 log: []
             }
             command.installServer(socket,server)
-            serversDB.insert(server)
+               .then((server)=>{
+                  //Save server info to DB
+                  serversDB.insert(server)
+                  //return new server to GUI
+                  socket.broadcast.emit("addServerToList",server)
+               })
+               .catch((err)=>{
+                  console.log("Create server failed:",err)
+                  console.log("Removing failed server dir")
+                  fs.remove(server.cwd,(err)=>{
+                     console.log("Removing failed server dir also failed:",err)
+                  })
+               })
         } else {
             returnFunction("No Data Sent")
         }
@@ -164,6 +174,27 @@ app.use(express.static('client'))
 app.use('/materialize',express.static('./node_modules/materialize-css/dist'))
 
 
+
+
+
+
+
+//Get BuildTools.jar
+function getBuildTools(){
+   var dir = installDirParent+"bin/BuildTools/"
+   var buildToolsJar = dir + "BuildTools.jar"
+   console.log("Starting to download build tools to:",buildToolsJar)
+   var BTURL = "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
+   fs.ensureDir(dir)
+   .then((err)=>{
+      console.log(err)
+      request(BTURL)
+         .pipe(
+            fs.createWriteStream(buildToolsJar)
+         )
+   })
+
+}
 
 
 // Get latest Vanilla 

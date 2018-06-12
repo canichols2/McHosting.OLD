@@ -21,15 +21,25 @@ socket.on("servers", function (servers) {
     console.log("recieved server list: ", servers)
     $('#serverList')[0].innerHTML = null;
     for (s in servers) {
-        console.log("creating server: ", s)
-        createServerExpandable(s);
-        var term = document.getElementById(s + "-stdout")
+        console.log("creating server: ", servers[s].name)
+        createServerExpandable(servers[s].name);
+        var term = document.getElementById(servers[s].name + "-stdout")
         for (l in servers[s].log) {
             term.innerHTML += servers[s].log[l];
             term.scrollTop = term.scrollHeight
-
         }
     }
+})
+socket.on("addServerToList",(server)=>{
+   console.log("AddServerToList was called:",server)
+   // Could be done better. I shouldn't need to getElementById.
+   // This method should just return the terminal element automatically.
+   createServerExpandable(server.name)
+   var term = document.getElementById(servers[s].name + "-stdout")
+      for (l in servers[s].log) {
+         term.innerHTML += servers[s].log[l];
+         term.scrollTop = term.scrollHeight
+      }
 })
 
 function createServer() {
@@ -45,6 +55,9 @@ function createServer() {
     if(data.minMem ==""){data.minMem="512mb"}
     if(data.vanilla ==""){return}
     if(data.servername ==""){return}
+    data.maxMem = "-Xmx"+data.maxMem
+    data.minMem = "-Xms"+data.minMem
+    data.jar = data.servername+".jar"
     console.log("Creating Server", data)
     socket.emit("createServer", data,function(log){
         console.log("CreateServer returnFunction:",log)
@@ -82,6 +95,7 @@ function installServer() {
     socket.emit("installServer");
 }
 
+// socket.emit("getBuildTools");
 
 function connectedToServer() {
     console.log("Connection to the server was established...");
