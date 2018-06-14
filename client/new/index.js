@@ -9,7 +9,9 @@ function createServer()
    var data={
       action:"create",
       server:{
-          name:"temp"
+          name:"temp",
+          shortVersion:"1.8.3",
+          type:"craftbukkit"
       }
       
    }
