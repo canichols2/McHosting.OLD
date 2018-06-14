@@ -13,13 +13,16 @@ var express = require('express'),
     request = require('request'),
     cheerio = require('cheerio'),
     fs = require('fs-extra')
-var vanillaVerion = getVanillaVersions(),
-    forgeVersion
+var vanillaVerion,forgeVersion,vVerP,fVerP
 var command = require('./consoleCommands');
-getForgeVersions(vanillaVerion.recommended)
-    .then((data) => {
-        forgeVersion = data
-    })
+vVerP = getVanillaVersions()
+.then((data)=>{
+   vanillaVerion = data
+   fVerP = getForgeVersions(vanillaVerion.recommended)
+   .then((data) => {
+      forgeVersion = data
+   })
+})
 
 if (process.platform == "win32") {
    process.env.installDirParent = "C:/opt/minecraft/"
@@ -35,18 +38,10 @@ var servers = [
          jar: 'craftbukkit.jar',
          maxRam: '-Xmx1G',
          minRam: '-Xms512M',
+         port:'25565',
          properties:{},
          log: []
-      },
-      {
-         cwd: "/opt/minecraft/server2",
-         name: "bukkit",
-         jar: 'craftbukkit.jar',
-         maxRam: '-Xmx1G',
-         minRam: '-Xms512M',
-         properties:{},
-         log: []
-      }
+      } 
 ]
 //Seed temporary data into persistant DB
 serversDB.find(
@@ -64,8 +59,6 @@ serversDB.find(
       
    }
 )
-//include the modules for our server functions
-
 
 
 //create the server and start listening on the defined port
@@ -82,6 +75,7 @@ io.listen(server).on('connection', (socket) => {
     serversDB.find({},(err,servers)=>{
       socket.emit("servers", servers)
    })
+   if(vanillaVerion !== null)
     socket.emit("version", vanillaVerion)
     //listen for what method to call
     socket.on("getForgeVersions", (vanillaVer, returnFunction) => {
@@ -141,12 +135,13 @@ io.listen(server).on('connection', (socket) => {
                 jar:"vanilla_"+data.vanilla+".jar",
                 name: SN,
                 vanillaVer:data.vanilla,
+                port:data.port,
                 maxRam: data.maxMem,
                 minRam: data.minMem,
                 log: []
             }
             command.installServer(socket,server)
-               .then((server)=>{
+               .then(()=>{
                   //Save server info to DB
                   console.log("attempting to add server to serversDB")
                   serversDB.insert(server)
@@ -199,6 +194,7 @@ function getBuildTools(){
 
 // Get latest Vanilla 
 function getVanillaVersions() {
+   return new Promise((res,rej)=>{
     var retData = {
         recommended: "",
         versions: []
@@ -228,7 +224,9 @@ function getVanillaVersions() {
             }
         })
     })
-    return retData;
+    return res(retData);
+      
+   })
 }
 
 function getForgeVersions(vanillaVer) {

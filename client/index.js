@@ -22,7 +22,7 @@ socket.on("servers", function (servers) {
     $('#serverList')[0].innerHTML = null;
     for (s in servers) {
         console.log("creating server: ", servers[s].name)
-        createServerExpandable(servers[s].name);
+        createServerExpandable(servers[s]);
         var term = document.getElementById(servers[s].name + "-stdout")
         for (l in servers[s].log) {
             term.innerHTML += servers[s].log[l];
@@ -34,7 +34,7 @@ socket.on("addServerToList",(server)=>{
    console.log("AddServerToList was called:",server)
    // Could be done better. I shouldn't need to getElementById.
    // This method should just return the terminal element automatically.
-   createServerExpandable(server.name)
+   createServerExpandable(server)
    var term = document.getElementById(server.name + "-stdout")
       for (l in server.log) {
          term.innerHTML += server.log[l];
@@ -58,6 +58,7 @@ function createServer() {
         minMem: document.querySelector('#minMem').value,
         vanilla: document.querySelector('#vanillaVer').value,
         forge: document.querySelector('#forgeVer').value,
+        port:document.querySelector('#port').value,
         isForge: document.querySelector('#forgeCheckbox').checked ? true : false
     }
     if(data.maxMem ==""){data.maxMem="1G"}
@@ -178,7 +179,7 @@ function getForgeDropdown() {
     })
 }
 
-function createServerExpandable(serverName) {
+function createServerExpandable(server) {
     var list = $('#serverList')[0],
         li = newElem(list, "li"),
         head = newElem(li, "div", ["collapsible-header"]),
@@ -198,24 +199,24 @@ function createServerExpandable(serverName) {
         tgreen = newElem(tbtns, "div", ["circle", "green"]),
         ttitle = newElem(ttop, "div", ["title"]),
         tpre = newElem(term, "pre", ["body"])
-    name.innerHTML = serverName;
-    ttitle.innerHTML = serverName;
-    tpre.setAttribute('id', serverName + "-stdout")
+    name.innerHTML = server.name + ":"+server.port;
+    ttitle.innerHTML = server.name;
+    tpre.setAttribute('id', server.name + "-stdout")
     startBtn.innerHTML = "Start";
-    startBtn.setAttribute("serverName", serverName)
+    startBtn.setAttribute("serverName", server.name)
     $('.collapsible').collapsible();
     startBtn.addEventListener("click", function (event) {
         console.log(event)
-        var SN = serverName;
+        var SN = server.name;
         startServer(SN)
         event.preventDefault();
         event.stopPropagation();
     })
     stopBtn.innerHTML = "Stop";
-    stopBtn.setAttribute("serverName", serverName)
+    stopBtn.setAttribute("serverName", server.name)
     stopBtn.addEventListener("click", function (event) {
         console.log(event)
-        stopServer(serverName)
+        stopServer(server.name)
         event.preventDefault()
         event.stopPropagation()
     })

@@ -1,0 +1,73 @@
+<head>
+   <meta charset="UTF-8">
+   <title>Project Blocky</title>
+   <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+   <link rel="stylesheet" type="text/css" href="/styles/terminal.css">
+   <link rel="stylesheet" type="text/css" href="/styles/main.css">
+   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="index.js"></script>
+</head>
+
+<html>
+   <body>
+         <div class="row card blue-grey lighten-1">
+               <div class="card-content white-text">
+                   <div class="card-title">Create New Server</div>
+                   <form action="#">
+                       <div class="row">
+                          <div class="input-field col s6">
+                              <input data-error="Name your server" name="name" id="name" type="text">
+                              <label class="validate" for="name">Server Name</label>
+                          </div>
+                          <div class="input-field col s6">
+                              <input data-error="Pick a port" name="port" id="port" type="text">
+                              <label class="validate" for="port">PORT</label>
+                          </div>
+                       </div>
+                       <div class="row">
+                           <div class="input-field col s3">
+                               <input name="maxRam" id="maxMem" type="text">
+                               <label for="maxRam">Max Ram</label>
+                           </div>
+                           <div class="input-field col s3">
+                               <input name="maxRam" id="minMem" type="text">
+                               <label for="minRam">Min Ram</label>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="input-field col s2">
+                               <label>MC Version</label>       
+                               <select id="vanillaVer" class="">
+                                   <option value="" disabled selected></option>
+                                   <option value="1.12.2">1.12.2</option>
+                                   <option value="1.12.1">1.12.1</option>
+                                   <option value="1.11.1">1.11.1</option>
+                               </select>
+                           </div>
+                           <div class="input-field col s4">
+                               <label>Forge Version</label>  
+                               <select id="forgeVer" class="">
+                                   <option value="" disabled selected></option>
+                                   <option value="1.12.1">1.12.1</option>
+                                   <option value="1.112.1">1.112.1</option>
+                                   <option value="1.11.1">1.11.1</option>
+                               </select>
+                           </div>
+                           <div class="input-field col s5">
+                               <input type="checkbox" id="forgeCheckbox">
+                               <label for="forgeCheckbox">Create Forge Server</label>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div id="creationMessage"></div>
+                       </div>
+                       <div class="row">
+                           <button onclick="createServer()" class="btn waves-light right">Create Server</button>
+                       </div>
+                   </form>
+               </div>
+           </div>
+   </body>
+</html>
