@@ -25,9 +25,9 @@ vVerP = getVanillaVersions()
 })
 
 if (process.platform == "win32") {
-   process.env.installDirParent = "C:/opt/minecraft/"
+   installDirParent = "C:/opt/minecraft/"
 } else {
-   process.env.installDirParent = "/opt/minecraft/"
+   installDirParent = "/opt/minecraft/"
 }
 
 var serversDB = new Datastore({filename:"servers.db",autoload:true})

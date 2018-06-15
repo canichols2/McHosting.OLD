@@ -64,6 +64,10 @@ function ensureBuildTools(server){
       .then((exists)=>{
          console.log("inside ensureBuildTools.Promise.fs.pathExists.then()")
          if(!exists){
+            io.emit('statusUpdate',{
+               server:server,
+               status:"Downloading BuildTools.jar",
+            })
             
                download.urlToFile(
                   "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
@@ -71,11 +75,22 @@ function ensureBuildTools(server){
                   "buildtools.jar"
                )  
                .then(()=>{
+                  io.emit('statusUpdate',{
+                     server:server,
+                     status:"Downloading BuildTools.jar",
+                  })
                   resolve(server)
                })
                .catch(reject)
          }
-         else(resolve())
+         else{
+            io.emit('statusUpdate',{
+               server:server,
+               status:"BuildTools.jar Done",
+            })
+            resolve()
+         }
+      
       })
    })
 }
@@ -109,6 +124,11 @@ exports.ensureBTServerJar = ensureBTserverjar
 function ensureServerFile(server) {
    return new Promise((resolve, reject) => {
       console.log("ensureServerFile")
+
+      io.emit('statusUpdate',{
+         server:server,
+         status:"Preparing server binary",
+      })
       
       switch (server.type) {
          case "vanilla":
