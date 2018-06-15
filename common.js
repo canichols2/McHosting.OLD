@@ -1,6 +1,16 @@
 
 var hostSettingsDB   = require("./database.js").hostSettingsDB
-
+exports.serverStatus = Object.freeze({
+   untouched:0,
+   created:1,
+   downloading:2,
+   downloaded:3,
+   creatingSettings:4,
+   runingInitial:5,
+   running:6,
+   online:7,
+   offline:8,
+})
 exports.inspect = function inspect(_in, optionalMessage) {
    console.log(optionalMessage||"Inspect:", _in);
    return _in;

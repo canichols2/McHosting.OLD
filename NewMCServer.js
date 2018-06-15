@@ -3,9 +3,19 @@ var serversDB        = require("./database.js").serversDB
 var hostSettingsDB   = require("./database.js").hostSettingsDB
 var inspect          = require("./common").inspect;
 var getSetting       = require("./common").getSetting;
+var serverStatus     = require("./common").serverStatus;
 var fs               = require('fs-extra')
 var download         = require('./download')
 var spawn            = require('child_process').spawn
+
+function sendStatusUpdate(server,message) {
+   io.emit('statusUpdate',{
+      server:server,
+      message:message
+   })
+}
+
+
 
 function updateServerInDB(server){
    return new Promise((resolve, reject) => {
@@ -64,30 +74,25 @@ function ensureBuildTools(server){
       .then((exists)=>{
          console.log("inside ensureBuildTools.Promise.fs.pathExists.then()")
          if(!exists){
-            io.emit('statusUpdate',{
-               server:server,
-               status:"Downloading BuildTools.jar",
-            })
+            sendStatusUpdate(server,"Downloading BuildTools.jar")
             
                download.urlToFile(
                   "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar",
                   server.binDir,
-                  "buildtools.jar"
+                  "buildtools.jar",
+                  (percent)=>{
+                     server.status=serverStatus.downloading;
+                     sendStatusUpdate(server,`Downloading BuildTools.jar: ${percent}`)
+                  }
                )  
                .then(()=>{
-                  io.emit('statusUpdate',{
-                     server:server,
-                     status:"Downloading BuildTools.jar",
-                  })
+                  sendStatusUpdate(server,"BuildTools.jar Done")
                   resolve(server)
                })
                .catch(reject)
          }
          else{
-            io.emit('statusUpdate',{
-               server:server,
-               status:"BuildTools.jar Done",
-            })
+            sendStatusUpdate(server,"BuildTools.jar Done")
             resolve()
          }
       
@@ -109,6 +114,7 @@ function ensureBTserverjar(server) {
       //    console.log("downloading Spigot/craftbukkit file: ERROR:",data.toString())
       // })
       var p = new Promise((resolve, reject) => {
+         sendStatusUpdate(server,"Downloading server.jar")
          GenServerJars.on('error',data=>{
             if(data.toString().includes("Could not get version"))
             return reject(data.toString())
@@ -133,10 +139,8 @@ function ensureServerFile(server) {
    return new Promise((resolve, reject) => {
       console.log("ensureServerFile")
 
-      io.emit('statusUpdate',{
-         server:server,
-         status:"Preparing server binary",
-      })
+      server.status=serverStatus.downloading
+      sendStatusUpdate(server,"Preparing server binary")
       
       switch (server.type) {
          case "vanilla":
@@ -151,7 +155,11 @@ function ensureServerFile(server) {
             .then((dir)=>{server.binDir = dir+"bin/BuildTools/";return server;})
             .then(ensureBuildTools)
             .then(ensureBTserverjar)
-            // .then((server)=>{console.log("inside ensureServerFile.ensureBuildTools.then():",server);return server;})
+            .then((server)=>{
+               server.status=serverStatus.downloaded;
+               sendStatusUpdate(server,"Binaries Downloaded")
+               return server;
+            })
             .then(resolve)
             break;
             
@@ -159,13 +167,6 @@ function ensureServerFile(server) {
          default:
             break;
       }
-
-
-      getSetting("serversDir")
-      .then((dir)=>{
-         // download.urlToFile(URL,PATH,FILE,OnPercentage,inspect)
-      })
-      // return resolve(server);
    });
 }
 function createSymlinkToServer(server) {
@@ -181,6 +182,8 @@ function createSymlinkToServer(server) {
 }
 function createEULA(server) {
    return new Promise((resolve, reject) => {
+      server.status=serverStatus.creatingSettings;
+      sendStatusUpdate(server,"Accepting EULA")
       fs.writeFile(server.cwd+"eula.txt", "eula=true")
       .then(resolve)
       .catch(()=>{return reject("EULA not created")})
@@ -189,7 +192,9 @@ function createEULA(server) {
 }
 function createServerProp(server) {
    return new Promise((resolve, reject) => {
-      console.log("createServerProp")
+      server.status=serverStatus.creatingSettings;
+      sendStatusUpdate(server,"Creating default ServerProp")
+      // console.log("createServerProp")
       console.log("TODO: Create default serverprop and unique port number")
       return resolve(server);
    });
@@ -197,6 +202,8 @@ function createServerProp(server) {
 
 
 module.exports= function (server) {
+   server.status=serverStatus.untouched
+   sendStatusUpdate(server,"starting creation")
    let promise = Promise.resolve(server)
    //Add server to DB
       .then(addServerToDB)

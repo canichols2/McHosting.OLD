@@ -1,77 +1,192 @@
+<html>
+
 <head>
    <meta charset="UTF-8">
    <title>Project Blocky</title>
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
    <link rel="stylesheet" type="text/css" href="/styles/terminal.css">
    <link rel="stylesheet" type="text/css" href="/styles/main.css">
    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-   <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
    <script src="/socket.io/socket.io.js"></script>
    <script src="index.js"></script>
 </head>
 
-<html>
-   <body>
-      <div class="card blue-grey lighten-1">
-         
+<body class="blue-grey darken-3">
+
+   <nav class="nav-extended">
+
+      <div class="nav-wrapper  blue-grey darken-1">
+         <a href="#" class="brand-logo center">
+            <strong>Project Blocky</strong>
+         </a>
+         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+               <a href="#">Account</a>
+            </li>
+            <li>
+               <a href="#">Sign Out</a>
+            </li>
+         </ul>
+
       </div>
-      <div class="row card blue-grey lighten-1">
-         <div class="card-content white-text">
-               <div class="card-title">Create New Server</div>
-               <form action="#">
-                  <div class="row">
-                     <div class="input-field col s6">
-                        <input data-error="Name your server" name="name" id="name" type="text">
-                        <label class="validate" for="name">Server Name</label>
+      <div class="nav-content blue-grey darken-2">
+
+         <ul class="tabs tabs-transparent ">
+
+            <li class="tab">
+               <a href="#dashboard" class="active">Dashboard</a>
+            </li>
+            <li class="tab">
+               <a href="#stats">Server Stats</a>
+            </li>
+            <li class="tab">
+               <a href="#users">User Management</a>
+            </li>
+            <li class="tab">
+               <a href="#backups">Backups</a>
+            </li>
+            <li class="tab">
+               <a href="#commands">Commands</a>
+            </li>
+            <li class="tab">
+               <a href="#map">World Map</a>
+            </li>
+
+         </ul>
+
+      </div>
+
+   </nav>
+   <main class="container row">
+      <div class="col s12 m12 l6 xl4 all-transition">
+         
+         <div class="card sticky-action  teal all-transition">
+            <div class="card-content scale-transition ">
+               <span onclick="
+               this.parentElement.parentElement.parentElement.classList.remove('m4');
+               this.parentElement.parentElement.parentElement.classList.add('m12');
+               this.parentElement.parentElement.classList.add('medium');
+               
+               " class="card-title activator">
+                  Bukkit Server
+                  <span class=" badge " data-badge-caption="">
+                     <i onclick="console.log('called');" class="material-icons black-text">edit</i>
+                  </span>
+                  <span class="new badge green" data-badge-caption="">online</span>
+               </span>
+               <p>This server does some things</p>
+            </div>
+            <div class="card-action">
+               <a href="#" class="">Start</a>
+               <a href="#" class="">Stop</a>
+            </div>
+            <div class="card-reveal grey">
+               <span class="card-title activator" onclick="
+               this.parentElement.parentElement.parentElement.classList.add('m4');
+               this.parentElement.parentElement.parentElement.classList.remove('m12');
+               this.parentElement.parentElement.classList.remove('medium');
+               ">
+                  Bukkit Server
+               </span>
+               
+               <div class="terminal space shadow">
+                  <div class="top">
+                     <div class="btns">
+                        <span class="circle red"></span>
+                        <span class="circle yellow"></span>
+                        <span class="circle green"></span>
                      </div>
-                     <div class="input-field col s6">
-                        <input data-error="Pick a port" name="port" id="port" type="text">
-                        <label class="validate" for="port">PORT</label>
-                     </div>
+                     <div class="title">Minecraft Server</div>
                   </div>
-                  <div class="row">
-                     <div class="input-field col s3">
-                           <input name="maxRam" id="maxMem" type="text">
-                           <label for="maxRam">Max Ram</label>
-                     </div>
-                     <div class="input-field col s3">
-                           <input name="maxRam" id="minMem" type="text">
-                           <label for="minRam">Min Ram</label>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="input-field col s2">
-                           <label>MC Version</label>       
-                           <select id="vanillaVer" class="">
-                              <option value="" disabled selected></option>
-                              <option value="1.12.2">1.12.2</option>
-                              <option value="1.12.1">1.12.1</option>
-                              <option value="1.11.1">1.11.1</option>
-                           </select>
-                     </div>
-                     <div class="input-field col s4">
-                           <label>Forge Version</label>  
-                           <select id="forgeVer" class="">
-                              <option value="" disabled selected></option>
-                              <option value="1.12.1">1.12.1</option>
-                              <option value="1.112.1">1.112.1</option>
-                              <option value="1.11.1">1.11.1</option>
-                           </select>
-                     </div>
-                     <div class="input-field col s5">
-                           <input type="checkbox" id="forgeCheckbox">
-                           <label for="forgeCheckbox">Create Forge Server</label>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div id="creationMessage"></div>
-                  </div>
-                  <div class="row">
-                     <button onclick="createServer()" class="btn waves-light right">Create Server</button>
-                  </div>
-               </form>
+                  <pre class="body">
+                  </pre>
+               </div>
+            </div>
          </div>
       </div>
-         
-   </body>
+         <div class="col s3">
+            <div class="card">
+               <!-- <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="images/office.jpg">
+               </div> -->
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">Card Title
+                     <i class="material-icons right">more_vert</i>
+                  </span>
+                  <p>
+                     <a href="#">This is a link</a>
+                  </p>
+               </div>
+               <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Card Title
+                     <i class="material-icons right">close</i>
+                  </span>
+                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card-panel teal">
+               <div class="card-content">
+                  <div class="card-title">New Card</div>
+                  <div>card content</div>
+               </div>
+            </div>
+         </div>
+   </main>
+
+</body>
+
 </html>
+
+<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>

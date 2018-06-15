@@ -11,6 +11,7 @@ var  express = require("./singleton").express,
 // var io = require('./singletons')
 var serversDB        = require("./database.js").serversDB
 var hostSettingsDB   = require("./database.js").hostSettingsDB
+var serverStatus     = require("./common").serverStatus;
 var  MC = require( "./McCommands")
 var  AC = require( "./AdminCommands")
 var serverSettings = [
