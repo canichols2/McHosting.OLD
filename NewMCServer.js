@@ -85,6 +85,8 @@ function ensureBTserverjar(server) {
          cwd:server.binDir,
          stdio: ['pipe', 'pipe', 'pipe']
       })
+      //////////////// Use if you want to display output back to user.
+      //////////////// But don't console.log it.....
       // GenServerJars.stdout.on('data',(data)=>{
       //    console.log("downloading Spigot/craftbukkit file:",data.toString())
       // })
@@ -94,15 +96,21 @@ function ensureBTserverjar(server) {
       var p = new Promise((resolve, reject) => {
          GenServerJars.on('error',data=>{
             if(data.toString().includes("Could not get version"))
-            reject(data.toString())
+            return reject(data.toString())
+         //TODO: if problem was locked file
+         //remove locked files/and restart
+            return reject(data.toString())
          })
          GenServerJars.on('exit',data=>{
-         if(GenServerJars.exitCode == 0){resolve(server)}
+         if(GenServerJars.exitCode == 0){
+            server.status="server bin jar downloaded";
+            server.binJar = server.type+"-"+server.shortVersion+".jar"
+            resolve(server)}
          else{reject("not sure why spawn java broke:",data)}
        })
    });
-   return GenServerJars;
-   // return p;
+   // return GenServerJars;
+   return p;
 }
 exports.ensureBTServerJar = ensureBTserverjar
 
@@ -143,41 +151,49 @@ function ensureServerFile(server) {
 function createSymlinkToServer(server) {
    return new Promise((resolve, reject) => {
       console.log("createSymlinkToServer")
-      return resolve(server);
+      fs.ensureSymlink(server.binDir+server.binJar,server.cwd+server.jar)
+      .then(resolve)
+      .catch((err)=>{
+         return reject("Symlink not created for some reason:",err)
+      })
+      // return resolve(server);
    });
 }
 function createEULA(server) {
    return new Promise((resolve, reject) => {
-      console.log("createEULA")
-      return resolve(server);
+      fs.writeFile(server.cwd+"eula.txt", "eula=true")
+      .then(resolve)
+      .catch(()=>{return reject("EULA not created")})
+      // return resolve(server);
    });
 }
 function createServerProp(server) {
    return new Promise((resolve, reject) => {
       console.log("createServerProp")
+      console.log("TODO: Create default serverprop and unique port number")
       return resolve(server);
    });
 }
 
 
-// module.exports= function (server) {
-//    let promise = Promise.resolve(server)
-//    //Add server to DB
-//       .then(addServerToDB)
-//       .then(inspect)
-//    //ensure server directory is created
-//       .then(ensureServerDir)
-//       .then(inspect)
-//       //ensure server file is downloaded
-//       .then(ensureServerFile)
-//       .then(inspect)
-//    //create symlink
-//       .then(createSymlinkToServer)
-//    //create EULA
-//       .then(createEULA)
-//    //create server.properties
-//       .then(createServerProp)
-//       .then(inspect)
-//    //
-//    return promise
-// }
+module.exports= function (server) {
+   let promise = Promise.resolve(server)
+   //Add server to DB
+      .then(addServerToDB)
+      .then(inspect)
+   //ensure server directory is created
+      .then(ensureServerDir)
+      .then(inspect)
+      //ensure server file is downloaded
+      .then(ensureServerFile)
+      .then(inspect)
+   //create symlink
+      .then(createSymlinkToServer)
+   //create EULA
+      .then(createEULA)
+   //create server.properties
+      .then(createServerProp)
+      .then(inspect)
+   //
+   return promise
+}
