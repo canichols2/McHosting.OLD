@@ -52,17 +52,19 @@ var serverStatus = Object.freeze({
 function startServer(server) {
       socket.emit('serverAction',{
          action:'start',
-
+         server:server
       })
 }
 function stopServer(server) {
-      
+   socket.emit('serverAction',{
+      action:'stop',
+      server:server
+   })
 }
 function editServer(server) {
-      
+   console.log("TODO: EDITSERVER")
 }
-function createServer()
-{
+function createServer(){
    console.log($('#newServerForm'))
    
    var name = document.getElementById('name')
@@ -82,7 +84,7 @@ function createServer()
    }
    console.log("server",data.server)
    
-   // socket.emit('ServerAction',data)
+   socket.emit('ServerAction',data)
    name.value=""
    ver.value=""
    // type.value=""
