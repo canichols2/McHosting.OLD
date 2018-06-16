@@ -24,14 +24,16 @@ hostSettingsDB.count({},(err,count)=>{
 })
 if (process.platform == "win32") {   installDirParent = "C:/opt/minecraft/"} else {   installDirParent = "/opt/minecraft/"}
 
-module.exports.io = io
-module.exports.serversPath = installDirParent
-module.exports.serversDB = serversDB
-module.exports.hostSettingsDB = hostSettingsDB
-
 
 
 io.listen(server).on('connection',(socket)=>{
+   serversDB.find({},(err,servers)=>{
+      var data = {
+         servers:servers
+      }
+      socket.emit('allServers',data)
+   })
+   
    socket.on('ServerAction' ,(Data)=>{
       console.log("ServerAction")
       switch (Data.action) {

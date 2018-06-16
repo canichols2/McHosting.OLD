@@ -14,6 +14,9 @@
 .collapsible-header .spacer{
    flex-grow: 10;
 }
+.xsmall{
+   height: 150px;
+}
 .all-transition{
    transition:all 0.3s ease-out !important;
 }
@@ -38,3 +41,6 @@
 form{
    color: black;
 }
+label {
+   pointer-events: auto;
+ }
