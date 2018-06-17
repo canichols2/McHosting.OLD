@@ -39,9 +39,11 @@ io.listen(server).on('connection',(socket)=>{
       switch (Data.action) {
          case "start":
             console.log("start")
+            MC.startServer(data.server)
             break;
          case "stop":
             console.log("stop")
+            MC.stopServer(data.server)
             break;
          case "create":
             console.log("create:",Data.server)
@@ -55,6 +57,7 @@ io.listen(server).on('connection',(socket)=>{
             break;
          case "remove":
             console.log("remove")
+            MC.deleteServer(data.server)
             break;
       
          default:
