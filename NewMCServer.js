@@ -7,19 +7,9 @@ var serverStatus     = require("./common").serverStatus;
 var fs               = require('fs-extra')
 var download         = require('./download')
 var spawn            = require('child_process').spawn
+var sendStatusUpdate = require('./common').sendStatusUpdate
+var sendLogUpdate    = require('./common').sendLogUpdate
 
-function sendStatusUpdate(server,message) {
-   io.emit('statusUpdate',{
-      server:server,
-      message:message
-   })
-}
-function sendLogUpdate(server,message) {
-   io.emit('logUpdate',{
-      server:server,
-      message:message
-   })
-}
 function sendNewServer(server,message) {
    io.emit('newServer',{
       server:server,

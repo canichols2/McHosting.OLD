@@ -1,4 +1,4 @@
-
+var io               = require("./singleton").io
 var hostSettingsDB   = require("./database.js").hostSettingsDB
 exports.serverStatus = Object.freeze({
    untouched:0,
@@ -24,4 +24,17 @@ exports.getSetting = function getSetting(key)
             return resolve(doc.value);
       })
    });
+}
+
+exports.sendStatusUpdate = function sendStatusUpdate(server,message) {
+   io.emit('statusUpdate',{
+      server:server,
+      message:message
+   })
+}
+exports.sendLogUpdate = function sendLogUpdate(server,message) {
+   io.emit('logUpdate',{
+      server:server,
+      message:message
+   })
 }
