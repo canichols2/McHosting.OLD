@@ -5,6 +5,12 @@ var newMCServer      = require("./NewMCServer").all
 var writeServerProp  = require("./NewMCServer").createServerProp
 var serverStatus     = require("./common").serverStatus;
 var runningServers   = require('./runningServers')
+var spawn            = require('./singleton').spawn
+var sendStatusUpdate = require('./common').sendStatusUpdate
+var sendLogUpdate    = require('./common').sendLogUpdate
+
+
+var runningServers={}
 
 exports.newServer = function(server)
 {
@@ -19,7 +25,25 @@ exports.newServer = function(server)
 }
 exports.startServer = function startServer(server){
    new Promise((resolve, reject) => {
-       
+       runningServers[server.name] = spawn('java',
+      ['-jar',
+       server.jar,
+       'nogui',
+       '-Xmx'+server.maxMem,
+       '-Xms'+server.minMem],
+      {cwd:server.cwd,
+       stdio:['pipe','pipe','pipe']})
+      
+       runningServers[server.name].on('error',(data)=>{
+          sendLogUpdate(server,data.toString())
+          serversDB
+       })
+       runningServers[server.name].stdout.on('data',(data)=>{
+          sendLogUpdate(server,data.toString())
+       })
+       runningServers[server.name].stderr.on('data',(data)=>{
+          sendLogUpdate(server,data.toString())
+       })
    });
 }
 exports.stopServer  = function stopServer(server){
