@@ -38,12 +38,12 @@ io.listen(server).on('connection',(socket)=>{
       console.log("ServerAction")
       switch (Data.action) {
          case "start":
-            console.log("start")
-            MC.startServer(data.server)
+            console.log("start server:",Data)
+            MC.startServer(Data.server)
             break;
          case "stop":
-            console.log("stop")
-            MC.stopServer(data.server)
+            console.log("stop server:",Data)
+            MC.stopServer(Data.server)
             break;
          case "create":
             console.log("create:",Data.server)
@@ -57,7 +57,7 @@ io.listen(server).on('connection',(socket)=>{
             break;
          case "remove":
             console.log("remove")
-            MC.deleteServer(data.server)
+            MC.deleteServer(Data.server)
             break;
       
          default:
@@ -82,5 +82,5 @@ app.use(express.static('client'))
 app.use('/materialize',express.static('./node_modules/materialize-css/dist'))
 
 console.log("Listening for a connection...");
-console.log("Access Web GUI at http://127.0.0.1:"+PORT);
+console.log("Access Web GUI at http://127.0.0.1:"+PORT+"/new");
 server.listen(PORT)

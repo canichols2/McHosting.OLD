@@ -436,6 +436,7 @@ module.exports.all= function (server) {
    //create server.properties
       .then(createServerProp)
       .then(inspect)
+      .then(updateServerInDB)
    //
    return promise
 }

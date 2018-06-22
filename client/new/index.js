@@ -17,6 +17,11 @@ socket.on('newServer',(data)=>{
    console.log("newServer:data:",data)
    createServerCard(data.server)
 })
+socket.on('deleteServer',(data)=>{
+   console.log("deleteServer:data:",data)
+   var card = document.getElementById(data.server._id)
+   removeDOM(card.parentElement)
+})
 socket.on('statusUpdate',(data)=>{
    console.log("socket.on('statusUpdate'),",data)
    var status = $('#'+data.server._id+'-status')[0]
@@ -34,7 +39,7 @@ socket.on('statusUpdate',(data)=>{
    }
 })
 socket.on('logUpdate',(data)=>{
-   var term = $('#'+data.server._id+'-term')
+   var term = $('#'+data.server._id+'-term')[0]
    var update = newElem(term,'div',['text-green'])
    update.innerHTML=data.message
 })
@@ -50,13 +55,13 @@ var serverStatus = Object.freeze({
    offline:8,
 })
 function startServer(server) {
-      socket.emit('serverAction',{
+      socket.emit('ServerAction',{
          action:'start',
          server:server
       })
 }
 function stopServer(server) {
-   socket.emit('serverAction',{
+   socket.emit('ServerAction',{
       action:'stop',
       server:server
    })
@@ -132,8 +137,8 @@ function createServerCard(server){
          var server = serverParam
          console.log("start server:",server)
          startServer(server)
-         event.preventDefault();
-         event.stopPropagation();
+         // event.preventDefault();
+         // event.stopPropagation();
       }
    }(server))
    var cardActionsStop=newElem(cardActions,'a')
@@ -195,3 +200,9 @@ $(document).ready(function(){
    M.AutoInit();
         
  });
+
+ function removeDOM(elem){
+    var parent = elem.parentElement
+    parent.removeChild(elem)
+    return;
+ }

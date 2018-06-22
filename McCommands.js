@@ -33,10 +33,11 @@ exports.startServer = function startServer(server){
        '-Xms'+server.minMem],
       {cwd:server.cwd,
        stdio:['pipe','pipe','pipe']})
-      
+      sendStatusUpdate(server,"Online")
        runningServers[server.name].on('error',(data)=>{
           sendLogUpdate(server,data.toString())
-          serversDB
+          sendStatusUpdate(server,"Offline")
+         //  serversDB
        })
        runningServers[server.name].stdout.on('data',(data)=>{
           sendLogUpdate(server,data.toString())
@@ -48,15 +49,34 @@ exports.startServer = function startServer(server){
 }
 exports.stopServer  = function stopServer(server){
    new Promise((resolve, reject) => {
-       
+       var proc = runningServers[server.name]
+       if(typeof proc != "undefined") 
+       {
+          proc.stdin.write("stop\n")
+       }
+       else{
+          resolve(server)
+       }
    });
 }
 exports.deleteServer  = function(server){
    new Promise((resolve, reject) => {
-       Promise.resolve(server)
-       .then(stopServer)
-       .then(()=>{/*Remove server files with extreme predjudice*/})
-       .then(()=>{/*Remove server from DB*/})
-       .then(()=>{/*Remove server from GUI*/})
-   });
+       var p = Promise.resolve(server)
+       p.then(stopServer)
+       p.then(()=>{
+          /*Remove server files with extreme predjudice*/
+      return fs.remove(server.cwd)})
+       p.then(()=>{
+          /*Remove server from DB*/
+          serversDB.remove({_id:server._id})
+      })
+       p.then(()=>{
+          /*Remove server from GUI*/
+          io.emit('deleteServer',{server:server})
+         })
+       resolve()
+   })
+   .catch((err)=>{
+      console.log("Something in deleteserver crashed",err)
+   })
 }
