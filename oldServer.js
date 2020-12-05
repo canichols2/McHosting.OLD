@@ -46,8 +46,7 @@ var servers = [
 //Seed temporary data into persistant DB
 serversDB.find(
    {},
-   (err,docs)=>{
-      console.log("serversDB.find()")
+   (err,docs)=>{ 
       if(err || docs.length == 0)
       serversDB.insert(
          servers,
@@ -188,7 +187,6 @@ function getBuildTools(){
             fs.createWriteStream(buildToolsJar)
          )
    })
-
 }
 
 

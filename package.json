@@ -1,7 +1,7 @@
 {
     "name": "MinecraftHosting",
     "scripts": {
-        "start": "node server.js"
+        "start": "node app.js"
     },
     "version": "0.0.1",
     "description": "A hosting backend/fronted combo that allows easy creation and management of minecraft servers.",
@@ -17,5 +17,5 @@
         "request-promise-native": "^1.0.5",
         "socket.io": "latest"
     },
-    "author": "Cody Nichols,Arden Shackelford, Weston Clark"
+    "author": "Cody Nichols"
 }
