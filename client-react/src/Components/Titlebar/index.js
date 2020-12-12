@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     "text-align": "center",
   },
+  bar: {
+    backgroundColor: theme.palette.primary.light,
+  }
 }));
 
 export default function ButtonAppBar() {
@@ -23,7 +26,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
             MC Hosting

@@ -1,0 +1,802 @@
+{
+   "Servers": [
+      {
+         "ServerName": "Test 1",
+         "ServerType": "Vanilla",
+         "MinecraftVersion": "1.16.4",
+         "Port": 8080,
+         "MinRam": "1GB",
+         "MaxRam": "2GB",
+         "WorkingFolder": "Some/Cool/Path",
+         "JarFile": "myFile.jar",
+         "ServerProperties": [
+            {
+               "key": "spawn-protection",
+               "value": 16,
+               "isBoolean": false
+            },
+            {
+               "key": "max-tick-time",
+               "value": 60000,
+               "isBoolean": false
+            },
+            {
+               "key": "query.port",
+               "value": 25565,
+               "isBoolean": false
+            },
+            {
+               "key": "generator-settings",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "sync-chunk-writes",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "force-gamemode",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "allow-nether",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enforce-whitelist",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "gamemode",
+               "value": "survival",
+               "isBoolean": false
+            },
+            {
+               "key": "broadcast-console-to-ops",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-query",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "player-idle-timeout",
+               "value": 0,
+               "isBoolean": false
+            },
+            {
+               "key": "text-filtering-config",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "difficulty",
+               "value": "easy",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-monsters",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "broadcast-rcon-to-ops",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "op-permission-level",
+               "value": 4,
+               "isBoolean": false
+            },
+            {
+               "key": "pvp",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "entity-broadcast-range-percentage",
+               "value": 100,
+               "isBoolean": false
+            },
+            {
+               "key": "snooper-enabled",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "level-type",
+               "value": "default",
+               "isBoolean": false
+            },
+            {
+               "key": "hardcore",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-status",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-command-block",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "max-players",
+               "value": 20,
+               "isBoolean": false
+            },
+            {
+               "key": "network-compression-threshold",
+               "value": 256,
+               "isBoolean": false
+            },
+            {
+               "key": "resource-pack-sha1",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "max-world-size",
+               "value": 29999984,
+               "isBoolean": false
+            },
+            {
+               "key": "function-permission-level",
+               "value": 2,
+               "isBoolean": false
+            },
+            {
+               "key": "rcon.port",
+               "value": 25575,
+               "isBoolean": false
+            },
+            {
+               "key": "server-port",
+               "value": 25565,
+               "isBoolean": false
+            },
+            {
+               "key": "debug",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "server-ip",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-npcs",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "allow-flight",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "level-name",
+               "value": "world",
+               "isBoolean": false
+            },
+            {
+               "key": "view-distance",
+               "value": 10,
+               "isBoolean": false
+            },
+            {
+               "key": "resource-pack",
+               "value": "https\\://vanillatweaks.net/share/\\#Z6H3Z1",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-animals",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "white-list",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "rcon.password",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "generate-structures",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "max-build-height",
+               "value": 256,
+               "isBoolean": false
+            },
+            {
+               "key": "online-mode",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "level-seed",
+               "value": 4880431462883418527,
+               "isBoolean": false
+            },
+            {
+               "key": "use-native-transport",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "prevent-proxy-connections",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-jmx-monitoring",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-rcon",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "rate-limit",
+               "value": 0,
+               "isBoolean": false
+            }
+         ],
+         "IsEulaTrue": true,
+         "SecondaryVersionNumber": "8.5"
+      },
+      {
+         "ServerName": "Test 1",
+         "ServerType": "Vanilla",
+         "MinecraftVersion": "1.16.4",
+         "Port": 8080,
+         "MinRam": "1GB",
+         "MaxRam": "2GB",
+         "WorkingFolder": "Some/Cool/Path",
+         "JarFile": "myFile.jar",
+         "ServerProperties": [
+            {
+               "key": "spawn-protection",
+               "value": 16,
+               "isBoolean": false
+            },
+            {
+               "key": "max-tick-time",
+               "value": 60000,
+               "isBoolean": false
+            },
+            {
+               "key": "query.port",
+               "value": 25565,
+               "isBoolean": false
+            },
+            {
+               "key": "generator-settings",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "sync-chunk-writes",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "force-gamemode",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "allow-nether",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enforce-whitelist",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "gamemode",
+               "value": "survival",
+               "isBoolean": false
+            },
+            {
+               "key": "broadcast-console-to-ops",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-query",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "player-idle-timeout",
+               "value": 0,
+               "isBoolean": false
+            },
+            {
+               "key": "text-filtering-config",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "difficulty",
+               "value": "easy",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-monsters",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "broadcast-rcon-to-ops",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "op-permission-level",
+               "value": 4,
+               "isBoolean": false
+            },
+            {
+               "key": "pvp",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "entity-broadcast-range-percentage",
+               "value": 100,
+               "isBoolean": false
+            },
+            {
+               "key": "snooper-enabled",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "level-type",
+               "value": "default",
+               "isBoolean": false
+            },
+            {
+               "key": "hardcore",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-status",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-command-block",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "max-players",
+               "value": 20,
+               "isBoolean": false
+            },
+            {
+               "key": "network-compression-threshold",
+               "value": 256,
+               "isBoolean": false
+            },
+            {
+               "key": "resource-pack-sha1",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "max-world-size",
+               "value": 29999984,
+               "isBoolean": false
+            },
+            {
+               "key": "function-permission-level",
+               "value": 2,
+               "isBoolean": false
+            },
+            {
+               "key": "rcon.port",
+               "value": 25575,
+               "isBoolean": false
+            },
+            {
+               "key": "server-port",
+               "value": 25565,
+               "isBoolean": false
+            },
+            {
+               "key": "debug",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "server-ip",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-npcs",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "allow-flight",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "level-name",
+               "value": "world",
+               "isBoolean": false
+            },
+            {
+               "key": "view-distance",
+               "value": 10,
+               "isBoolean": false
+            },
+            {
+               "key": "resource-pack",
+               "value": "https\\://vanillatweaks.net/share/\\#Z6H3Z1",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-animals",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "white-list",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "rcon.password",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "generate-structures",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "max-build-height",
+               "value": 256,
+               "isBoolean": false
+            },
+            {
+               "key": "online-mode",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "level-seed",
+               "value": 4880431462883418527,
+               "isBoolean": false
+            },
+            {
+               "key": "use-native-transport",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "prevent-proxy-connections",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-jmx-monitoring",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-rcon",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "rate-limit",
+               "value": 0,
+               "isBoolean": false
+            }
+         ],
+         "IsEulaTrue": true,
+         "SecondaryVersionNumber": "8.5"
+      },
+      {
+         "ServerName": "Test 1",
+         "ServerType": "Vanilla",
+         "MinecraftVersion": "1.16.4",
+         "Port": 8080,
+         "MinRam": "1GB",
+         "MaxRam": "2GB",
+         "WorkingFolder": "Some/Cool/Path",
+         "JarFile": "myFile.jar",
+         "ServerProperties": [
+            {
+               "key": "spawn-protection",
+               "value": 16,
+               "isBoolean": false
+            },
+            {
+               "key": "max-tick-time",
+               "value": 60000,
+               "isBoolean": false
+            },
+            {
+               "key": "query.port",
+               "value": 25565,
+               "isBoolean": false
+            },
+            {
+               "key": "generator-settings",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "sync-chunk-writes",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "force-gamemode",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "allow-nether",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enforce-whitelist",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "gamemode",
+               "value": "survival",
+               "isBoolean": false
+            },
+            {
+               "key": "broadcast-console-to-ops",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-query",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "player-idle-timeout",
+               "value": 0,
+               "isBoolean": false
+            },
+            {
+               "key": "text-filtering-config",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "difficulty",
+               "value": "easy",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-monsters",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "broadcast-rcon-to-ops",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "op-permission-level",
+               "value": 4,
+               "isBoolean": false
+            },
+            {
+               "key": "pvp",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "entity-broadcast-range-percentage",
+               "value": 100,
+               "isBoolean": false
+            },
+            {
+               "key": "snooper-enabled",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "level-type",
+               "value": "default",
+               "isBoolean": false
+            },
+            {
+               "key": "hardcore",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-status",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-command-block",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "max-players",
+               "value": 20,
+               "isBoolean": false
+            },
+            {
+               "key": "network-compression-threshold",
+               "value": 256,
+               "isBoolean": false
+            },
+            {
+               "key": "resource-pack-sha1",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "max-world-size",
+               "value": 29999984,
+               "isBoolean": false
+            },
+            {
+               "key": "function-permission-level",
+               "value": 2,
+               "isBoolean": false
+            },
+            {
+               "key": "rcon.port",
+               "value": 25575,
+               "isBoolean": false
+            },
+            {
+               "key": "server-port",
+               "value": 25565,
+               "isBoolean": false
+            },
+            {
+               "key": "debug",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "server-ip",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-npcs",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "allow-flight",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "level-name",
+               "value": "world",
+               "isBoolean": false
+            },
+            {
+               "key": "view-distance",
+               "value": 10,
+               "isBoolean": false
+            },
+            {
+               "key": "resource-pack",
+               "value": "https\\://vanillatweaks.net/share/\\#Z6H3Z1",
+               "isBoolean": false
+            },
+            {
+               "key": "spawn-animals",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "white-list",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "rcon.password",
+               "value": "",
+               "isBoolean": false
+            },
+            {
+               "key": "generate-structures",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "max-build-height",
+               "value": 256,
+               "isBoolean": false
+            },
+            {
+               "key": "online-mode",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "level-seed",
+               "value": 4880431462883418527,
+               "isBoolean": false
+            },
+            {
+               "key": "use-native-transport",
+               "value": true,
+               "isBoolean": true
+            },
+            {
+               "key": "prevent-proxy-connections",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-jmx-monitoring",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "enable-rcon",
+               "value": false,
+               "isBoolean": true
+            },
+            {
+               "key": "rate-limit",
+               "value": 0,
+               "isBoolean": false
+            }
+         ],
+         "IsEulaTrue": true,
+         "SecondaryVersionNumber": "8.5"
+      }
+   ],
+   "ServerType": [
+      "Vanilla",
+      "Forge",
+      "Spigot",
+      "Bedrock"
+   ]
+}
