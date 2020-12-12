@@ -1,3 +1,0 @@
-vanillaVersion=1.12.2
-recommendedForge=1.12.2-14.23.1.2555
-latestForge=
